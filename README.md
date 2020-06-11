@@ -5,7 +5,7 @@ This repository houses the main project for the course ICS311
 - download xltrail (https://github.com/xlwings/git-xl/releases/download/0.4.2/git-xl-windows-0.4.2.exe)
 - refreshenv (or re-open your CLI)
 - git xl install
- - Now when you run a git diff, xlsx file format will now be understood by git.
+  - Now when you run a git diff, xlsx file format will now be understood by git.
 
 - git diff
 ```diff --xl a/iteration_2_template.xlsx b/iteration_2_template.xlsx
