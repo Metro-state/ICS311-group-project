@@ -8,8 +8,9 @@ This repository houses the main project for the course ICS311
 Now when you run a git diff, xlsx file format will now be understood by git.
 
 - git diff
-diff --xl a/iteration_2_template.xlsx b/iteration_2_template.xlsx
+```diff --xl a/iteration_2_template.xlsx b/iteration_2_template.xlsx
 --- a/iteration_2_template.xlsx/Worksheets/OMDB Queries
 +++ b/iteration_2_template.xlsx/Worksheets/OMDB Queries
 -84 cells
 +85 cells
+```
