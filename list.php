@@ -1,5 +1,5 @@
 <?php
-  $nav_selected = "LIST";
+  $nav_selected = "Movies";
   $left_buttons = "NO";
   $left_selected = "";
 
