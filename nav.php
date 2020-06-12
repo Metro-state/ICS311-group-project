@@ -33,16 +33,16 @@
               <br/>OMDB - Online Movie Database</li>
             </a>
 
-            <a href="index.php">
-              <li <?php if($nav_selected == "Home"){ echo 'class="current-page"'; } ?>>
-              <img src="./images/video.png">
-              <br/>Movies</li>
-            </a>
-
             <a href="list.php">
               <li <?php if($nav_selected == "Movies"){ echo 'class="current-page"'; } ?>>
                 <img src="./images/movies.png">
                 <br/>Movies</li>
+            </a>
+
+            <a href="index.php">
+              <li <?php if($nav_selected == "Home"){ echo 'class="current-page"'; } ?>>
+              <img src="./images/director.png">
+              <br/>People</li>
             </a>
 
             <a href="timeline.php">
