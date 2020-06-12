@@ -82,26 +82,20 @@
 
         <td style="width: 120px;" valign="top">
         <?php
-            if ($nav_selected == "Home") {
+            if ($nav_selected == "HOME") {
                 include("./index.php");
-            } elseif ($nav_selected == "Movies") {
-                include("./left_menu_list.php");
-            } elseif ($nav_selected == "TIMELINE") {
-                include("./left_menu_timeline.php");
-            } elseif ($nav_selected == "REPORTS") {
-                include("./left_menu_reports.php");
             } elseif ($nav_selected == "MOVIES") {
                 include("./left_menu_movies.php");
-            } elseif ($nav_selected == "HISTORY") {
-                include("./left_menu_history.php");
-            } elseif ($nav_selected == "TREND") {
-              include("./left_menu_trend.php");
-           } elseif ($nav_selected == "SETUP") {
-            include("./left_menu_setup.php");
-          } elseif ($nav_selected == "ABOUT") {
-          include("./left_menu_about.php");
-          }elseif ($nav_selected == "HELP") {
-                include("./left_menu_help.php");
+            } elseif ($nav_selected == "PEOPLE") {
+                include("./left_menu_people.php");
+            } elseif ($nav_selected == "SONGS") {
+                include("./left_menu_songs.php");
+            } elseif ($nav_selected == "REPORTS") {
+                include("./left_menu_reports.php");
+            } elseif ($nav_selected == "PUZZLES") {
+                include("./left_menu_puzzles.php");
+            }elseif ($nav_selected == "HELP") {
+                  include("./left_menu_help.php");
             } else {
                 include("./left_menu.php");
             }
