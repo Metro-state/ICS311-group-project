@@ -40,9 +40,9 @@
             </a>
 
             <a href="list.php">
-              <li <?php if($nav_selected == "LIST"){ echo 'class="current-page"'; } ?>>
-                <img src="./images/list.png">
-                <br/>List</li>
+              <li <?php if($nav_selected == "Movies"){ echo 'class="current-page"'; } ?>>
+                <img src="./images/movies.png">
+                <br/>Movies</li>
             </a>
 
             <a href="timeline.php">
@@ -109,7 +109,7 @@
         <?php
             if ($nav_selected == "OMDB") {
                 include("./index.php");
-            } elseif ($nav_selected == "LIST") {
+            } elseif ($nav_selected == "Movies") {
                 include("./left_menu_list.php");
             } elseif ($nav_selected == "TIMELINE") {
                 include("./left_menu_timeline.php");
