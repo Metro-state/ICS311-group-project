@@ -34,9 +34,9 @@
             </a>
 
             <a href="index.php">
-              <li <?php if($nav_selected == "HOME"){ echo 'class="current-page"'; } ?>>
-              <img src="./images/home.png">
-              <br/>Home</li>
+              <li <?php if($nav_selected == "OMDB"){ echo 'class="current-page"'; } ?>>
+              <img src="./images/OMDB logo.png">
+              <br/>OMDB</li>
             </a>
 
             <a href="list.php">
@@ -107,7 +107,7 @@
 
         <td style="width: 120px;" valign="top">
         <?php
-            if ($nav_selected == "HOME") {
+            if ($nav_selected == "OMDB") {
                 include("./index.php");
             } elseif ($nav_selected == "LIST") {
                 include("./left_menu_list.php");
