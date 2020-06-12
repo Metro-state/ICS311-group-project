@@ -33,20 +33,20 @@
               <br/>OMDB - Online Movie Database</li>
             </a>
 
-            <a href="index.php">
-              <li <?php if($nav_selected == "Home"){ echo 'class="current-page"'; } ?>>
+            <a href="movies.php">
+              <li <?php if($nav_selected == "MOVIES"){ echo 'class="current-page"'; } ?>>
               <img src="./images/video.png">
               <br/>Movies</li>
             </a>
 
-            <a href="list.php">
-              <li <?php if($nav_selected == "LIST"){ echo 'class="current-page"'; } ?>>
+            <a href="people.php">
+              <li <?php if($nav_selected == "PEOPLE"){ echo 'class="current-page"'; } ?>>
                 <img src="./images/director.png">
                 <br/>People</li>
             </a>
 
-            <a href="timeline.php">
-              <li <?php if($nav_selected == "TIMELINE"){ echo 'class="current-page"'; } ?>>
+            <a href="songs.php">
+              <li <?php if($nav_selected == "SONGS"){ echo 'class="current-page"'; } ?>>
               <img src="./images/music.png">
               <br/>Songs</li>
             </a>
@@ -57,8 +57,8 @@
               <br/>Reports</li>
             </a>
 
-            <a href="scanner.php">
-              <li <?php if($nav_selected == "SCANNER"){ echo 'class="current-page"'; } ?>>
+            <a href="puzzles.php">
+              <li <?php if($nav_selected == "PUZZLES"){ echo 'class="current-page"'; } ?>>
                 <img src="./images/jigsaw.png">
                 <br/>Puzzles</li>
             </a>
@@ -90,8 +90,8 @@
                 include("./left_menu_timeline.php");
             } elseif ($nav_selected == "REPORTS") {
                 include("./left_menu_reports.php");
-            } elseif ($nav_selected == "SCANNER") {
-                include("./left_menu_scanner.php");
+            } elseif ($nav_selected == "MOVIES") {
+                include("./left_menu_movies.php");
             } elseif ($nav_selected == "HISTORY") {
                 include("./left_menu_history.php");
             } elseif ($nav_selected == "TREND") {
