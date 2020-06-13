@@ -1,6 +1,6 @@
 <?php
 
-  $nav_selected = "SCANNER"; 
+  $nav_selected = "MOVIES"; 
   $left_buttons = "YES"; 
   $left_selected = "RELEASES"; 
 
@@ -13,9 +13,9 @@
 <div class="right-content">
     <div class="container">
 
-      <h3 style = "color: #01B0F1;">Scanner -> System Releases</h3>
+      <h3 style = "color: #01B0F1;">Movies -> System Releases</h3>
 
-        <h3><img src="images/releases.png" style="max-height: 35px;" /> Movies</h3>
+        <h3><img src="images/cinema_2.png" style="max-height: 35px;" /> Movies</h3>
 
         <table id="info" cellpadding="0" cellspacing="0" border="0"
             class="datatable table table-striped table-bordered datatable-style table-hover"
