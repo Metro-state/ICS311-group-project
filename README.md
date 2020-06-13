@@ -14,3 +14,5 @@ This repository houses the main project for the course ICS311
 -84 cells
 +85 cells
 ```
+## Get Started
+To get started, please visit the [project's wiki page](https://github.com/Metro-state/ICS311-group-project/wiki)
