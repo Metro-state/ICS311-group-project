@@ -2,7 +2,7 @@
 ## Description
 This repository houses the main project for the course ICS311
 ## Making xlsx file format work with git
-- download xltrail (https://github.com/xlwings/git-xl/releases/download/0.4.2/git-xl-windows-0.4.2.exe)
+- download [xltrail](https://github.com/xlwings/git-xl/releases/download/0.4.2/git-xl-windows-0.4.2.exe)
 - refreshenv (or re-open your CLI)
 - git xl install
   - Now when you run a git diff, xlsx file format will now be understood by git.
@@ -14,3 +14,5 @@ This repository houses the main project for the course ICS311
 -84 cells
 +85 cells
 ```
+## Getting started
+To get started, please visit the [Project's wiki page](https://github.com/Metro-state/ICS311-group-project/wiki)
