@@ -39,13 +39,13 @@ switch ($argv[1]) {
     break;
 
     /* verion a .sql file that does not have a version
-     * command: php migrate.php version X_<filename>.sql
+     * command: php migrate.php add X_<filename>.sql
      * 
      * sql files that are ready to be versioned must have the naming convention X_<filename>.sql
      * this command will rename the file <version>_<filename>.sql and append a INSERT statement into the sql file
      * to upgrade the version in the schema
      */
-    case "version":
+    case "add":
       $sqlfile = $argv[2];
       $fileformat = "~^X_.*\.sql$~";
       if (!preg_match($fileformat, $sqlfile)) {
@@ -65,8 +65,8 @@ switch ($argv[1]) {
       rename($filepath, $newfile);
       echo "Appending the new schema version to the .SQL file...\n";
       $fp = fopen($newfile, 'a');
-      fwrite($fp, "\n");
-      fwrite($fp, "INSERT INTO ".$dbversion_scheme." (".$version.", '".$newfile."')");  
+      fwrite($fp, "\n\n");
+      fwrite($fp, "INSERT INTO ".$dbversion_scheme." (".$version.", '".$newfile."');");  
       fclose($fp);  
       break;
 
