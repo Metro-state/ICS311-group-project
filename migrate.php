@@ -26,8 +26,7 @@ switch ($argv[1]) {
    */
   case "init":
     echo "Checking for Versioning Schema...\n";
-    $sql = "SELECT 1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = ".$dbversion_scheme."";
-    if ($conn->query($sql) === TRUE) {
+    if ($conn->query("DESCRIBE $dbversion_scheme")) {
       echo "Migration Schema already exist. Procedure abort!";
     } else {
       echo "Creating Migration Schema...\n";
@@ -66,6 +65,7 @@ switch ($argv[1]) {
       rename($filepath, $newfile);
       echo "Appending the new schema version to the .SQL file...\n";
       $fp = fopen($newfile, 'a');
+      fwrite($fp, "\n");
       fwrite($fp, "INSERT INTO ".$dbversion_scheme." (".$version.", '".$newfile."')");  
       fclose($fp);  
       break;
