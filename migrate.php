@@ -6,6 +6,11 @@
  *
  * @author KONG
  * @version 1.0.0
+ * 
+ * Version 1.0.0 (INITIAL 1.0.0)
+ * - Ability to run the init command to set up the migration schema
+ * - Ability to rename and version each SQL file
+ * - Ability to update the schema to the latest version
  */
 
 $servername = "localhost";
@@ -47,7 +52,7 @@ switch ($argv[1]) {
      */
     case "add":
       $sqlfile = $argv[2];
-      $fileformat = "~^X_.*\.sql$~";
+      $fileformat = "~^X_.*\.(?i)(sql)$~";
       if (!preg_match($fileformat, $sqlfile)) {
         echo "Entered a wrong file format. The input file must have the following covention: X_<filename>.sql";
         break;
@@ -61,13 +66,14 @@ switch ($argv[1]) {
       $res = $conn->query("SELECT version FROM ".$dbversion_scheme." ORDER BY version DESC LIMIT 1;");
       $version = $res->fetch_row()[0] + 1;
       $newfile = preg_replace('/X/', strval($version), $filepath, 1);
-      echo "Renaming the file...\n";
+      echo "Renaming the file to ".$newfile."...\n";
       rename($filepath, $newfile);
-      echo "Appending the new schema version to the .SQL file...\n";
+      echo "Appending the new schema version to ".$newfile."...\n";
       $fp = fopen($newfile, 'a');
       fwrite($fp, "\n\n");
       fwrite($fp, "INSERT INTO ".$dbversion_scheme." (".$version.", '".$newfile."');");  
-      fclose($fp);  
+      fclose($fp);
+      echo "Versioning complete!";
       break;
 
     /* upgrade the schema to the latest version
@@ -75,6 +81,17 @@ switch ($argv[1]) {
      *
      * find the version of the current schema then find the next version in the sql file
      */
+    case "up":
+      $current = $conn->query("SELECT version FROM ".$dbversion_scheme." ORDER BY version DESC LIMIT 1;");
+      echo "Current version of the schema: ".$current->fetch_row()[0]."\n";
+      $fileformat = "~^(.+)\/([^/\d+_]+)[0-9]+_.*\.(?i)(sql)$~";
+      $it = new RecursiveDirectoryIterator($dbmigration, RecursiveDirectoryIterator::SKIP_DOTS);
+      foreach(new RecursiveIteratorIterator($it) as $file) {
+        if (!preg_match($fileformat, $file)) {
+          continue;
+        }
+      }
+      break;
 }
 
 ?>
