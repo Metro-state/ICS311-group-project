@@ -71,7 +71,7 @@ switch ($argv[1]) {
       echo "Appending the new schema version to ".$newfile."...\n";
       $fp = fopen($newfile, 'a');
       fwrite($fp, "\n\n");
-      fwrite($fp, "INSERT INTO ".$dbversion_scheme." (".$version.", '".$newfile."');");  
+      fwrite($fp, "INSERT INTO ".$dbversion_scheme." VALUES(".$version.", '".$newfile."');");  
       fclose($fp);
       echo "Versioning complete!";
       break;
@@ -82,16 +82,28 @@ switch ($argv[1]) {
      * find the version of the current schema then find the next version in the sql file
      */
     case "up":
-      $current = $conn->query("SELECT version FROM ".$dbversion_scheme." ORDER BY version DESC LIMIT 1;");
-      echo "Current version of the schema: ".$current->fetch_row()[0]."\n";
+      $current = $conn->query("SELECT version FROM ".$dbversion_scheme." ORDER BY version DESC LIMIT 1;")->fetch_row()[0];
+      echo "Current version of the schema: $current\n";
       $fileformat = "~^(.+)\/([^/\d+_]+)[0-9]+_.*\.(?i)(sql)$~";
       $it = new RecursiveDirectoryIterator($dbmigration, RecursiveDirectoryIterator::SKIP_DOTS);
       foreach(new RecursiveIteratorIterator($it) as $file) {
         if (!preg_match($fileformat, $file)) {
           continue;
         }
+        $next = intval(substr($file,strpos($file,'\\')+1,strpos($file,'_')-strpos($file,'\\')-1)); // refector this
+        if ($next > $current) {
+          echo "Applying migration on ".$file."\n";
+          $sql = file_get_contents($file);
+          if (!$conn->multi_query($sql)) {
+            echo "Exception occured while upgrading to verion ".$next."!\n";
+            echo $conn->error;
+          }
+          echo "Updated schema version to ".$next."!\n";
+        }
       }
+      echo "Migration complete!";
       break;
 }
+$conn->close();
 
 ?>
