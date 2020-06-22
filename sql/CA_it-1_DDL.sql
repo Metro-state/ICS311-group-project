@@ -22,5 +22,3 @@ VALUES
     ('Star Wars: Episode IV - A New Hope', 'Star Wars: Episode IV - A New Hope', 1977),
     ('Interstellar', 'Interstellar', 2014)
 ;
-
---why is this file grey what
