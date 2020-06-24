@@ -4,6 +4,8 @@
  * to help aid team members in versioning their SQL scripts
  * and automatically applying new schema changes
  *
+ * Documentations can be found here: https://github.com/Metro-state/ICS311-group-project/wiki/SQL:-Migration-explained
+ *
  * @author KONG
  * @version 1.0.1
  * 
