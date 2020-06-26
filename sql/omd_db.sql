@@ -14,6 +14,7 @@ CREATE TABLE movie (
     FOREIGN KEY (year_made) REFERENCES year(year_made)
 );
 
+-- actors & actresses
 CREATE TABLE actor (
     actorID INT(10) PRIMARY KEY,
     full_name VARCHAR(25)
@@ -22,17 +23,6 @@ CREATE TABLE actor (
 CREATE TABLE actress (
     actressID INT(10) PRIMARY KEY,
     full_name VARCHAR(25)
-);
-
-CREATE TABLE photo (
-    photoID INT(10) PRIMARY KEY,
-    photo BLOB
-);
-
-CREATE TABLE song (
-    songID INT(10),
-    song_name VARCHAR(25),
-    lyrics text
 );
 
 --Will contain null on either actress or actor when # of each is not semetrical
@@ -66,6 +56,48 @@ CREATE TABLE female_acts (
     year_made SMALLINT(4) NOT NULL,
     name_native VARCHAR(45) NOT NULL,
     FOREIGN KEY (actressID) REFERENCES actress(actressID),
+    FOREIGN KEY (year_made) REFERENCES movie(year_made),
+    FOREIGN KEY (name_native) REFERENCES movie(name_native)
+);
+
+--multimedia
+CREATE TABLE photo (
+    photoID INT(10) PRIMARY KEY,
+    photo BLOB NOT NULL
+);
+
+CREATE TABLE poster (
+    posterID INT(10) PRIMARY KEY,
+    poster BLOB NOT NULL
+);
+
+--Will contain null where missing a multimedia attribute
+CREATE TABLE promotes (
+    photoID INT(10),
+    posterID INT(10),
+    songID INT(10),
+    year_made SMALLINT(4) NOT NULL,
+    name_native VARCHAR(45) NOT NULL,
+    FOREIGN KEY (photoID) REFERENCES photo(photoID),
+    FOREIGN KEY (posterID) REFERENCES poster(posterID),
+    FOREIGN KEY (songID) REFERENCES song(songID),
+    FOREIGN KEY (year_made) REFERENCES movie(year_made),
+    FOREIGN KEY (name_native) REFERENCES movie(name_native)
+);
+
+--music
+CREATE TABLE song (
+    songID INT(10) NOT NULL,
+    song_name VARCHAR(25) NOT NULL,
+    lyrics text,
+    PRIMARY KEY (songID)
+);
+
+CREATE TABLE played (
+    songID INT(10),
+    year_made SMALLINT(4) NOT NULL,
+    name_native VARCHAR(45) NOT NULL,
+    FOREIGN KEY (songID) REFERENCES song(songID),
     FOREIGN KEY (year_made) REFERENCES movie(year_made),
     FOREIGN KEY (name_native) REFERENCES movie(name_native)
 );
