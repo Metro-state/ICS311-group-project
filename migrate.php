@@ -76,17 +76,22 @@ switch ($argv[1]) {
     }
     echo "Fetching latest version of the schema...\n";
     $res = $conn->query("SELECT version FROM ".$dbversion_scheme." ORDER BY version DESC LIMIT 1;");
-    $version = $res->fetch_row()[0] + 1;
-    $newfile = preg_replace('/X/', strval($version), $filepath, 1);
-    echo "Renaming the file to ".$newfile."...\n";
-    rename($filepath, $newfile);
-    echo "Appending the new schema version to ".$newfile."...\n";
-    $fp = fopen($newfile, 'a');
-    fwrite($fp, "\n\n");
-    fwrite($fp, "INSERT INTO ".$dbversion_scheme." VALUES(".$version.", '".$newfile."');");  
-    fclose($fp);
-    echo "Versioning complete!";
-    break;
+	  if ($res != null) {
+		  $version = $res->fetch_row()[0] + 1;
+		  $newfile = preg_replace('/X/', strval($version), $filepath, 1);
+		  echo "Renaming the file to ".$newfile."...\n";
+		  rename($filepath, $newfile);
+		  echo "Appending the new schema version to ".$newfile."...\n";
+		  $fp = fopen($newfile, 'a');
+		  fwrite($fp, "\n\n");
+		  fwrite($fp, "INSERT INTO ".$dbversion_scheme." VALUES(".$version.", '".$newfile."');");  
+		  fclose($fp);
+		  echo "Versioning complete!";
+		  break;
+	  } else {
+		  echo 'Versioning table does not exist. Please run "migrate init" first.';
+		  break;
+	  }
   }
 
   /* upgrade the schema to the latest version
@@ -115,6 +120,8 @@ switch ($argv[1]) {
         }
         $count++;
         echo "Successfully migrated ".$file." (schema version: ".$next.".0)!\n";
+      } elseif ($next == $current) {
+        echo "Already up to date, nothing changed.\n";
       }
     }
     echo $count." total migrations performed";
