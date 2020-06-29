@@ -30,6 +30,15 @@ CREATE TABLE meta_data (
   `keywords` VARCHAR(25) NOT NULL
 );
 
+CREATE TABLE `people` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `Actor`varchar(64), 
+  `Actress` varchar(64), 
+  `Lyricist` varchar(64), 
+  `Producer` varchar(64), 
+  `Director`  varchar(64)
+  );
+
 CREATE TABLE `releases` (
   `id` INT(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(89) DEFAULT NULL,
