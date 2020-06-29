@@ -42,9 +42,15 @@ CREATE TABLE `people` (
 CREATE TABLE `movie_media` (
   `id` INT(10) NOT NULL AUTO_INCREMENT, 
   `posters` varchar(516) NOT NULL, 
-  `photo_stills` varchar(516) NOT NULL,
   PRIMARY KEY(id),
   FOREIGN KEY (id) REFERENCES movies(movie_id)
+);
+
+CREATE TABLE `movie_stills` (
+  `id` INT(6) NOT NUll AUTO_INCREMENT,
+  `image` varchar(516) NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY(id) REFERENCES movies(movie_id)
 );
 
 CREATE TABLE `releases` (
