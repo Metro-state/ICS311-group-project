@@ -12,6 +12,9 @@ INSERT INTO `people`
   (`id`, `Actor`, `Actress`, `Lyricist`, `Producer`, `Director`),
   
 INSERT INTO `movie_media` 
-  (`id`, `posters`, `photo_stills`)
+  (`id`, `posters`, `photo_stills`),
+  
+INSERT INTO `meta data`
+  ('language`, `country`, `plot`, `genre`, `trivia`, `keywords`),
   ;
 
