@@ -3,12 +3,15 @@ INSERT INTO `movies`
 VALUES
     ('1', 'Joker', 2019, 'Joker', 'creepy', 'Tom Brady', 'Shallow', 'popular'),
 
-INSET INTO `songs` 
+INSERT INTO `songs` 
   (`songID`, `song_name`, `lyrics`)
 VALUES 
    ('2', 'Shallow', 'Far from shallow'),
 
-INSET INTO `people` 
-  (`id`, `Actor`, `Actress`, `Lyricist`, `Producer`, `Director`)
+INSERT INTO `people` 
+  (`id`, `Actor`, `Actress`, `Lyricist`, `Producer`, `Director`),
+  
+INSERT INTO `movie_media` 
+  (`id`, `posters`, `photo_stills`)
   ;
 
