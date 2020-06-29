@@ -17,13 +17,16 @@ CREATE TABLE songs (
    PRIMARY KEY (songID)
 );
 
-CREATE TABLE meta_data ( 
+CREATE TABLE meta_data (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
   `language` VARCHAR(25) DEFAULT NULL, 
   `country` VARCHAR(25) DEFAULT NULL, 
   `plot` VARCHAR(25) DEFAULT NULL,
   `genre` VARCHAR(25) DEFAULT NULL, 
   `trivia` VARCHAR(25) DEFAULT NULL, 
-  `keywords` VARCHAR(25) DEFAULT NULL
+  `keywords` VARCHAR(25) DEFAULT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY (id) REFERENCES movies(movie_id)
 );
 
 CREATE TABLE `people` (
@@ -40,7 +43,8 @@ CREATE TABLE `movie_media` (
   `id` INT(10) NOT NULL AUTO_INCREMENT, 
   `posters` varchar(516) NOT NULL, 
   `photo_stills` varchar(516) NOT NULL,
-  PRIMARY KEY(id)
+  PRIMARY KEY(id),
+  FOREIGN KEY (id) REFERENCES movies(movie_id)
 );
 
 CREATE TABLE `releases` (
