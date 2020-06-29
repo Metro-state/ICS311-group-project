@@ -42,7 +42,7 @@ CREATE TABLE `people` (
 
 CREATE TABLE `movie_media` (
   `media_id` INT(10) NOT NULL AUTO_INCREMENT, 
-  `posters` varchar(64), 
+  `posters` varchar NOT NULL, 
   `photo_stills` varchar(64),
   PRIMARY KEY(media_id)
 ),
