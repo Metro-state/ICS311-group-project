@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `movies` (
-  `id`SMALLINT(4) NOT NULL,
+  `id`SMALLINT(4) NOT NULL AUTO_INCREMENT,
   `name_native` VARCHAR(45) NOT NULL,
   `year_made` SMALLINT(4) NOT NULL,
   `name_english` VARCHAR(45) DEFAULT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE `movies` (
   `people`VARCHAR(45) DEFAULT NULL,
   `songs`VARCHAR(45) DEFAULT NULL,
   `media_details`VARCHAR(45) DEFAULT NULL,
-   PRIMARY KEY (name_native)
+   PRIMARY KEY (id)
 ); 
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `movies` (
 --
 
 CREATE TABLE songs ( 
-  `songID` INT(10) NOT NULL, 
+  `songID` INT(10) NOT NULL AUTO_INCREMENT, 
   `song_name` VARCHAR(25) NOT NULL, 
   `lyrics` VARCHAR(40) DEFAULT NULL,
    PRIMARY KEY (songID)
@@ -56,7 +56,7 @@ CREATE TABLE meta_data (
   `plot` VARCHAR(25) NOT NULL,
   `genre` VARCHAR(25) NOT NULL, 
   `trivia` VARCHAR(25) NOT NULL, 
-  `keywords` VARCHAR(25) NOT NULL,
+  `keywords` VARCHAR(25) NOT NULL
 );
 -- --------------------------------------------------------
 
@@ -65,7 +65,7 @@ CREATE TABLE meta_data (
 --
 
 CREATE TABLE `releases` (
-  `id` varchar(10) NOT NULL,
+  `id` varchar(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(89) DEFAULT NULL,
   `type` varchar(6) DEFAULT NULL,
   `status` varchar(9) DEFAULT NULL,
@@ -77,7 +77,8 @@ CREATE TABLE `releases` (
   `manager` varchar(14) DEFAULT NULL,
   `author` varchar(15) DEFAULT NULL,
   `app_id` varchar(7) DEFAULT NULL,
-  `tag` varchar(100) NOT NULL
+  `tag` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -101,24 +102,6 @@ INSERT INTO `releases` (`id`, `name`, `type`, `status`, `open_date`, `dependency
 ('ICS-898985', 'Word Explorer 2022', 'Patch', 'Draft', '2021-10-01', '2021-08-23', NULL, '2021-10-18', '2021-12-06', 'Jasthi, Siva', 'Jasthi, Siva', 'BOM-114', ''),
 ('ICS-898989', 'Word Explorer 2020', 'Patch', 'Completed', '2019-10-01', '2019-08-23', NULL, '2019-10-18', '2019-12-06', 'Jasthi, Siva', 'Jasthi, Siva', 'BOM-104', 'active');
 
-
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `movies`
---
-ALTER TABLE `movies`
-  ADD PRIMARY KEY (`name_native`,`year_made`);
-
---
--- Indexes for table `releases`
---
-ALTER TABLE `releases`
-  ADD PRIMARY KEY (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
