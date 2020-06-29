@@ -3,15 +3,11 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 CREATE TABLE `movies` (
-  `id`INT(10) NOT NULL AUTO_INCREMENT,
-  `name_native` VARCHAR(45) NOT NULL,
-  `year_made` SMALLINT(4) NOT NULL,
-  `name_english` VARCHAR(45) DEFAULT NULL,
-  `extended_data`VARCHAR(45) DEFAULT NULL,
-  `people`VARCHAR(45) DEFAULT NULL,
-  `songs`VARCHAR(45) DEFAULT NULL,
-  `media_details`VARCHAR(45) DEFAULT NULL,
-   PRIMARY KEY (id)
+  `movie_id`INT(6) NOT NULL AUTO_INCREMENT,
+  `native_name` VARCHAR(45) NOT NULL,
+  `year_made` year(4) NOT NULL,
+  `english_name` VARCHAR(45) NOT NULL,
+   PRIMARY KEY (movie_id)
 ); 
 
 CREATE TABLE songs ( 
