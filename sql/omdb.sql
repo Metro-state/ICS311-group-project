@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `movies` (
-  `id`SMALLINT(4) NOT NULL AUTO_INCREMENT,
+  `id`INT(10) NOT NULL AUTO_INCREMENT,
   `name_native` VARCHAR(45) NOT NULL,
   `year_made` SMALLINT(4) NOT NULL,
   `name_english` VARCHAR(45) DEFAULT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE meta_data (
 --
 
 CREATE TABLE `releases` (
-  `id` varchar(10) NOT NULL AUTO_INCREMENT,
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(89) DEFAULT NULL,
   `type` varchar(6) DEFAULT NULL,
   `status` varchar(9) DEFAULT NULL,
