@@ -50,7 +50,7 @@ CREATE TABLE songs (
    PRIMARY KEY (songID)
 );
 
-CREATE TABLE meta data ( 
+CREATE TABLE meta_data ( 
   `language` VARCHAR(25) NOT NULL, 
   `country` VARCHAR(25) NOT NULL, 
   `plot` VARCHAR(25) NOT NULL,
