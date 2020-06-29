@@ -36,8 +36,16 @@ CREATE TABLE `people` (
   `Actress` varchar(64), 
   `Lyricist` varchar(64), 
   `Producer` varchar(64), 
-  `Director`  varchar(64)
-  );
+  `Director`  varchar(64),
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE `movie_media` (
+  `media_id` INT(10) NOT NULL AUTO_INCREMENT, 
+  `posters` varchar(64), 
+  `photo_stills` varchar(64),
+  PRIMARY KEY(media_id)
+),
 
 CREATE TABLE `releases` (
   `id` INT(10) NOT NULL AUTO_INCREMENT,
