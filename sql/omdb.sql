@@ -49,6 +49,16 @@ CREATE TABLE `people` (
   PRIMARY KEY(id)
 );
 
+CREATE TABLE `people_song` (
+  `id` INT(10) NOT NULL,
+  `songID` INT(10) NOT NULL,
+  `role` ENUM ('Lyricist', 'playback singer', 'musician'),
+  PRIMARY KEY(id, songID),
+  FOREIGN KEY(id) REFERENCES people(id),
+  FOREIGN KEY(songID) REFERENCES songs(songID)
+
+);
+
 -- M:M RELATIONSHIP
 CREATE TABLE `movie_people` (
   `movie_id`INT(6) NOT NULL,
@@ -89,3 +99,5 @@ CREATE TABLE `releases` (
   `tag` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+COMMIT;
