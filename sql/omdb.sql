@@ -17,6 +17,16 @@ CREATE TABLE songs (
    PRIMARY KEY (songID)
 );
 
+-- M:M Relationship
+CREATE TABLE movie_songs (
+  `movie_id`INT(6) NOT NULL,
+  `songID` INT(10) NOT NULL,
+  PRIMARY KEY(movie_id, songID),
+  FOREIGN KEY (movie_id) REFERENCES movies(movie_id),
+  FOREIGN KEY (songID) REFERENCES songs(songID)
+);
+
+
 CREATE TABLE meta_data (
   `id` INT(10) NOT NULL AUTO_INCREMENT,
   `language` VARCHAR(25) DEFAULT NULL, 
@@ -37,6 +47,16 @@ CREATE TABLE `people` (
   `Producer` varchar(64), 
   `Director`  varchar(64),
   PRIMARY KEY(id)
+);
+
+-- M:M RELATIONSHIP
+CREATE TABLE `movie_people` (
+  `movie_id`INT(6) NOT NULL,
+  `id` INT(10) NOT NULL,
+  `role` ENUM ('director', 'producer', 'music directory', 'lead_actor', 'lead_actress', 'supporting_actor', 'supporting_actress'),
+  PRIMARY KEY (movie_id, id),
+  FOREIGN KEY (movie_id) REFERENCES movies(movie_id),
+  FOREIGN KEY (id) REFERENCES people(id)
 );
 
 CREATE TABLE `movie_media` (
