@@ -5,8 +5,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `movies` (
   `movie_id`INT(6) NOT NULL AUTO_INCREMENT,
   `native_name` VARCHAR(45) NOT NULL,
-  `year_made` year(4) NOT NULL,
   `english_name` VARCHAR(45) NOT NULL,
+  `year_made` year(4) NOT NULL,
    PRIMARY KEY (movie_id)
 ); 
 
@@ -100,4 +100,19 @@ CREATE TABLE `releases` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-COMMIT;
+insert into movies values (1, 'The Lion King', 'The Lion King', 1995);
+insert into movies values (2, 'Beauty and the Beast', 'Beauty and the Beast', 1991);
+insert into movies values (3, 'Tangled', 'Tangled', 2010);
+insert into movies values (4, 'Cinderella', 'Cinderella', 1950);
+insert into movies values (5, 'Brave', 'Brave', 2012);
+insert into movies values (6, 'Frozen', 'Frozen', 2013);
+insert into movies values (7, 'Sleeping Beauty', 'Sleeping Beauty', 1959);
+insert into movies values (8, 'Snow White', 'Snow White', 1937);
+insert into movies values (9, 'Peter Pan', 'Peter Pan', 1953);
+insert into movies values (10, 'The Little Mermaid', 'The Little Mermaid', 1989);
+insert into movies values (11, 'Finding Nemo', 'Finding Nemo', 2003);
+insert into movies values (12, 'Aladdin', 'Aladdin', 1992);
+insert into movies values (13, 'Bambi', 'Bambi', 1942);
+insert into movies values (14, 'The Jungle Book', 'The Jungle Book', 1966);
+insert into movies values (15, 'Jumbo', 'Jumbo', 1941);
+insert into movies values (16, 'Moana', 'Moana', 2016);
