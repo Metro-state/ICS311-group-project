@@ -4,8 +4,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `movies` (
   `movie_id`INT(6) NOT NULL AUTO_INCREMENT,
-  `native_name` VARCHAR(45) NOT NULL,
-  `english_name` VARCHAR(45) NOT NULL,
+  `name_native` VARCHAR(45) NOT NULL,
+  `name_english` VARCHAR(45) NOT NULL,
   `year_made` year(4) NOT NULL,
    PRIMARY KEY (movie_id)
 ); 
@@ -82,23 +82,6 @@ CREATE TABLE `movie_stills` (
   PRIMARY KEY(id),
   FOREIGN KEY(id) REFERENCES movies(movie_id)
 );
-
-CREATE TABLE `releases` (
-  `id` INT(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(89) DEFAULT NULL,
-  `type` varchar(6) DEFAULT NULL,
-  `status` varchar(9) DEFAULT NULL,
-  `open_date` varchar(10) DEFAULT NULL,
-  `dependency_date` varchar(10) DEFAULT NULL,
-  `freeze_date` date DEFAULT NULL,
-  `content_date` varchar(10) DEFAULT NULL,
-  `rtm_date` varchar(10) DEFAULT NULL,
-  `manager` varchar(14) DEFAULT NULL,
-  `author` varchar(15) DEFAULT NULL,
-  `app_id` varchar(7) DEFAULT NULL,
-  `tag` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 insert into movies values (1, 'The Lion King', 'The Lion King', 1995);
 insert into movies values (2, 'Beauty and the Beast', 'Beauty and the Beast', 1991);
