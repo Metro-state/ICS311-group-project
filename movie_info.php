@@ -17,22 +17,38 @@
 					if (isset($_GET['id'])) {
 						$id = $_GET['id'];
 					}
-					$sql = "SELECT * from movies";
-					$result = $db->query($sql);
+					$stmt = $db->prepare("SELECT * 
+						FROM movies LEFT OUTER JOIN meta_data 
+						ON movies.movie_id = meta_data.id 
+						WHERE movies.movie_id = ?");
+					$stmt->bind_param("i", $id);
+					$stmt->execute();
 
-					if ($result->num_rows > 0) {
-					while($row = $result->fetch_assoc()) {
-						echo '<tr>
-								<td>'.$row["name_native"].'</td>
-								<td>'.$row["name_english"].' </span> </td>
-								<td>'.$row["year_made"].'</td>
-							</tr>';
+					/* Store the result (to get properties) */
+					$stmt->store_result();
+
+					/* Bind the result to variables */
+					$stmt->bind_result($movie_id, $name_native, $name_english, $year_made,
+									   $id, $language, $country, $plot, $genre, $trivia, $keywords);
+
+					while ($stmt->fetch()) {
+						//echo 'ID: '.$movie_id.'<br>';
+						echo '<b>Native Name</b>: '.$name_native.'<br>';
+						echo '<b>English Name</b>: '.$name_english.'<br>';
+						echo '<b>Year</b>: '.$year_made.'<br>';
+						echo '<b>Language</b>: '.$language.'<br>';
+						echo '<b>Country</b>: '.$country.'<br>';
+						echo '<b>Plot</b>: '.$plot.'<br>';
+						echo '<b>Genre</b>: '.$genre.'<br>';
+						echo '<b>Trivia</b>: '.$trivia.'<br>';
+						echo '<b>Keywords</b>: '.$keywords.'<br>';
 					}
-				} else {
-					echo "0 results";
-				}
 
-				 $result->close();
+					/* free results */
+					$stmt->free_result();
+
+					/* close statement */
+					$stmt->close();
 				?>
 			</tbody>
 		</table>

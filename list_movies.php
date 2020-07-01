@@ -48,8 +48,9 @@ $result = $db->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
+                        //$url = "/movie_info.php?id=".$row["movie_id"];
                         echo '<tr>
-                                <td>'.$row["name_native"].'</td>
+                                <td><a href="./movie_info.php?id='.$row["movie_id"].'">'.$row["name_native"].'</a></td>
                                 <td>'.$row["name_english"].' </span> </td>
                                 <td>'.$row["year_made"].'</td>
                             </tr>';
