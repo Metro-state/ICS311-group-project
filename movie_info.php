@@ -18,8 +18,8 @@
 						$id = $_GET['id'];
 					}
 					$stmt = $db->prepare("SELECT * 
-						FROM movies LEFT OUTER JOIN meta_data 
-						ON movies.movie_id = meta_data.id 
+						FROM movies LEFT OUTER JOIN movie_data
+						ON movies.movie_id = movie_data.movie_id 
 						WHERE movies.movie_id = ?");
 					$stmt->bind_param("i", $id);
 					$stmt->execute();
@@ -28,20 +28,18 @@
 					$stmt->store_result();
 
 					/* Bind the result to variables */
-					$stmt->bind_result($movie_id, $name_native, $name_english, $year_made,
-									   $id, $language, $country, $plot, $genre, $trivia, $keywords);
+					$stmt->bind_result($movie_id, $native_name, $english_name, $year_made,
+									   $movie_id, $language, $country, $genre, $plot);
 
 					while ($stmt->fetch()) {
 						//echo 'ID: '.$movie_id.'<br>';
-						echo '<b>Native Name</b>: '.$name_native.'<br>';
-						echo '<b>English Name</b>: '.$name_english.'<br>';
+						echo '<b>Native Name</b>: '.$native_name.'<br>';
+						echo '<b>English Name</b>: '.$english_name.'<br>';
 						echo '<b>Year</b>: '.$year_made.'<br>';
 						echo '<b>Language</b>: '.$language.'<br>';
 						echo '<b>Country</b>: '.$country.'<br>';
 						echo '<b>Plot</b>: '.$plot.'<br>';
 						echo '<b>Genre</b>: '.$genre.'<br>';
-						echo '<b>Trivia</b>: '.$trivia.'<br>';
-						echo '<b>Keywords</b>: '.$keywords.'<br>';
 					}
 
 					/* free results */
