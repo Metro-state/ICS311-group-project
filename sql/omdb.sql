@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2020 at 01:19 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Generation Time: Jul 02, 2020 at 07:31 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.3.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -40,9 +39,9 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`movie_id`, `native_name`, `english_name`, `year_made`) VALUES
-(1, 'frozen', 'frozen', 2013),
-(2, 'local_name_2', 'engish_name_2', 2003),
-(3, 'local_name_3', 'engish_name_3', 1932),
+(1, 'Frozen', 'Frozen', 2013),
+(2, 'Wreck-It Ralph', 'Wreck-It Ralph', 2012),
+(3, 'Coco', 'Coco', 2017),
 (4, 'local_name_4', 'engish_name_4', 1916),
 (5, 'local_name_5', 'engish_name_5', 1936),
 (6, 'local_name_6', 'engish_name_6', 2000),
@@ -1062,7 +1061,9 @@ CREATE TABLE `movie_data` (
 --
 
 INSERT INTO `movie_data` (`movie_id`, `language`, `country`, `genre`, `plot`) VALUES
-(1, 'English', 'USA', 'Animation', 'Princess Elsa of Arendelle possesses magical powers that allow her to control and create ice and snow, often using them to play with her younger sister, Anna. After Elsa accidentally injures Anna with her magic, their parents, the King and Queen, take both siblings to a colony of trolls led by Grand Pabbie. He heals Anna, but alters her memories so that she forgets about Elsa\'s magic. Grand Pabbie warns Elsa that she must learn to control her powers, and that fear will be her greatest enemy. The');
+(1, 'English', 'USA', 'Animation', 'Princess Elsa of Arendelle possesses magical powers that allow her to control and create ice and snow, often using them to play with her younger sister, Anna. After Elsa accidentally injures Anna with her magic, their parents, the King and Queen, take both siblings to a colony of trolls led by Grand Pabbie. He heals Anna, but alters her memories so that she forgets about Elsa\'s magic. Grand Pabbie warns Elsa that she must learn to control her powers, and that fear will be her greatest enemy. The'),
+(2, 'English', 'USA', 'Animation', 'Arcade-game character Wreck-It Ralph is tired of always being the \"bad guy\" and losing to his \"good guy\" opponent, Fix-It Felix. Finally, after decades of seeing all the glory go to Felix, Ralph decides to take matters into his own hands. He sets off on a game-hopping trip to prove that he has what it takes to be a hero. However, while on his quest, Ralph accidentally unleashes a deadly enemy that threatens the entire arcade.'),
+(3, 'English/Sp', 'USA', 'Animation', 'Despite his family\'s generations-old ban on music, young Miguel dreams of becoming an accomplished musician like his idol Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead. After meeting a charming trickster named Héctor, the two new friends embark on an extraordinary journey to unlock the real story behind Miguel\'s family history.');
 
 -- --------------------------------------------------------
 

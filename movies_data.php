@@ -2,7 +2,7 @@
 
   $nav_selected = "MOVIES"; 
   $left_buttons = "YES"; 
-  $left_selected = "RELEASES"; 
+  $left_selected = "Data"; 
 
   include("./nav.php");
   global $db;
@@ -13,7 +13,7 @@
 <div class="right-content">
     <div class="container">
 
-      <h3 style = "color: #01B0F1;">Movies -> List of movies</h3>
+      <h3 style = "color: #01B0F1;">Movies -> Movie List with extended data</h3>
 
         <h3><img src="images/cinema_2.png" style="max-height: 35px;" /> Movies</h3>
 
@@ -22,27 +22,25 @@
             width="100%" style="width: 100px;">
               <thead>
                 <tr id="table-first-row">
+                        <th>Movie ID</th>
                         <th>Native Name</th>
                         <th>English Name</th>
-                        <th>Release Year</th>
+  			<th>Release Year</th>
+                        <th>Language</th>
+                        <th>Country</th>
+			<th>Genre</th>
+                        <th>Plot</th>
 
                 </tr>
               </thead>
-
-              <tfoot>
-                <tr>
-                        <th>Native Name</th>
-                        <th>English Name</th>
-                        <th>Release Year</th>
-
-                </tr>
-              </tfoot>
 
               <tbody>
 
               <?php
 
-$sql = "SELECT * from movies;";
+$sql = "SELECT * FROM movies INNER JOIN movie_data ON movies.movie_id = movie_data.movie_id ORDER BY year_made ASC;";
+
+
 $result = $db->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -50,9 +48,14 @@ $result = $db->query($sql);
                     while($row = $result->fetch_assoc()) {
                         //$url = "/movie_info.php?id=".$row["movie_id"];
                         echo '<tr>
-                                <td><a href="./movie_info.php?id='.$row["movie_id"].'">'.$row["native_name"].'</a></td>
-                                <td>'.$row["english_name"].' </span> </td>
-                                <td>'.$row["year_made"].'</td>
+				<td>'.$row["movie_id"].'</td>
+				<td>'.$row["native_name"].'</td>
+				<td>'.$row["english_name"].'</td>
+				<td>'.$row["year_made"].'</td>
+				<td>'.$row["language"].'</td>
+				<td>'.$row["country"].'</td>
+				<td>'.$row["genre"].'</td>
+				<td>'.substr($row["plot"],0,30).'</td>
                             </tr>';
                     }//end while
                 }//end if

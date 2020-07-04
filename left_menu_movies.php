@@ -7,11 +7,11 @@
   	<br/>Releases<br/></div>
   </a>
 
-  <a href="movies_warnings.php">
-  	<div <?php if($left_selected == "WARNINGS")
+  <a href="movies_data.php">
+  	<div <?php if($left_selected == "Data")
   	{ echo 'class="menu-left-current-page"'; } ?>>
-  	<img src="./images/warnings.png">
-  	<br/>Warnings<br/></div>
+  	<img src="./images/movie_data.png">
+  	<br/>Data<br/></div>
   </a>
 
   <a href = "movies_errors.php">
