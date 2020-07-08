@@ -300,7 +300,7 @@ image_name
 
 
 
-<!-- ================ [C.1] Songs (table: movie_song, songs, song_media, song_people, song_keywords)   ======================
+<!-- ================ [C.1] Songs (table: X-movie_song, X-songs, song_media, X-song_people, song_keywords)   ======================
 Display Type: Show this as a table
 
 title 
@@ -333,15 +333,51 @@ media (from songs_media - show the IDs as comma separated list, media_link will 
                   FROM movie_song JOIN songs ON (movie_song.song_id = songs.song_id)
                   WHERE movie_song.movie_id =" . $movie_id;
 
+
         if (!$sql_C1_result = $db->query($sql_C1)) {
           die('There was an error running query[' . $connection->error . ']');
         }
         if ($sql_C1_result->num_rows > 0) {
           while ($c1_tuple = $sql_C1_result->fetch_assoc()) {
-            echo '<tr>
-                      <td>' . $c1_tuple["title"] . '</td>
-                      <td>' . substr($c1_tuple["lyrics"], 0, 30) . '</td>
-                  </tr>';
+          	echo '<tr>';
+
+            echo '<td>' . $c1_tuple["title"] . '</td>
+                  <td>' . substr($c1_tuple["lyrics"], 0, 30) . '</td>
+                 ';
+
+            // START ====> song stuff
+            $song_id = $c1_tuple["song_id"];
+            $sql_C2 = "SELECT *
+                      FROM song_people JOIN people ON (song_people.people_id = people.id)
+                      WHERE song_id = ".$song_id;
+
+            if (!$sql_C2_result = $db->query($sql_C2)) {
+		          die('There was an error running query[' . $connection->error . ']');
+		        }
+		        while ($c2_tuple = $sql_C2_result->fetch_assoc()) {
+		        	echo '<td>' . $c2_tuple["screen_name"] . '</td>';
+		        	echo '<td>' . $c2_tuple["role"] . '</td>';
+		        }
+		        $sql_C2_result->close();
+		        // END ====> song stuff
+
+		        // START ====> song keywords
+            $sql_C3 = "SELECT *
+                      FROM song_keywords
+                      WHERE song_id = ".$song_id;
+
+            if (!$sql_C3_result = $db->query($sql_C3)) {
+		          die('There was an error running query[' . $connection->error . ']');
+		        }
+		        echo '<td>';
+		        while ($c3_tuple = $sql_C3_result->fetch_assoc()) {
+		        	echo '<li>' . $c3_tuple["keyword"] . '</li>';
+		        }
+		        echo '</td>';
+		        $sql_C3_result->close();
+		        // END ====> song keywords
+
+						echo '</tr>';
           }
         }
         $sql_C1_result->close();
