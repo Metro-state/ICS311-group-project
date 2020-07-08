@@ -1,12 +1,10 @@
 <?php
-$nav_selected = "MOVIES";
-$left_buttons = "YES";
-$left_selected = "NO";
+	$nav_selected = "MOVIES";
+	$left_buttons = "YES";
+	$left_selected = "NO";
 
-include("./nav.php");
-require 'bin/functions.php';
-require 'db_configuration.php';
-global $db;
+	include("./nav.php");
+	global $db;
 ?>
 
 <!-- =====================================================================================================
@@ -202,7 +200,6 @@ m_link_type
 
         <?php
 
-        // query string for the Query A.1
         $sql_A3 = "SELECT movie_id, movie_media_id, m_link, m_link_type 
               FROM movie_media
               WHERE movie_id =" . $movie_id;
@@ -220,7 +217,7 @@ m_link_type
             echo '<tr>
                       <td>' . $a3_tuple["movie_id"] . '</td>
                       <td>' . $a3_tuple["movie_media_id"] . '</td>
-                      <td>' . $a3_tuple["m_link"] . '</td>
+                      <td><img style="max-width: 100px; height: auto;" src="images/movies/'.$a3_tuple["m_link"].'"">
                       <td>' . $a3_tuple["m_link_type"] . ' </span> </td>
                   </tr>';
           } //end while
