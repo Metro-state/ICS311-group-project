@@ -50,7 +50,7 @@ $result = $db->query($sql);
                     while($row = $result->fetch_assoc()) {
                         //$url = "/movie_info.php?id=".$row["movie_id"];
                         echo '<tr>
-                                <td><a href="./movie_info.php?id='.$row["movie_id"].'">'.$row["native_name"].'</a></td>
+                                <td><a href="./movie_info.php?movie_id='.$row["movie_id"].'">'.$row["native_name"].'</a></td>
                                 <td>'.$row["english_name"].' </span> </td>
                                 <td>'.$row["year_made"].'</td>
                             </tr>';
