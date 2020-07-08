@@ -244,7 +244,21 @@ keywords (show it as a comma separated list)
 <div class="right-content">
   <div class="container">
     <h3 style="color: #01B0F1;">Movie -> Key Words</h3>
+      <?php
+        $sql_A4 = "SELECT movie_id, keyword
+                  FROM movie_keywords
+                  WHERE movie_id =" . $movie_id;
 
+        if (!$sql_A4_result = $db->query($sql_A4)) {
+          die('There was an error running query[' . $connection->error . ']');
+        }
+        if ($sql_A4_result->num_rows > 0) {
+          while ($a4_tuple = $sql_A4_result->fetch_assoc()) {
+            echo '<li>'.$a4_tuple["keyword"].'</li>';
+          }
+        }
+        $sql_A4_result->close();
+      ?>
   </div>
 </div>
 
