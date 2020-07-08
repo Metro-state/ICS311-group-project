@@ -1302,6 +1302,13 @@ ALTER TABLE `song_people`
 --
 ALTER TABLE `movies`
   MODIFY `movie_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
+
+INSERT INTO movie_media VALUES(1, 'frozen_poster_1.jpg', 'poster', 1);
+INSERT INTO movie_keywords VALUES(1, 'frozen');
+INSERT INTO movie_keywords VALUES(1, 'disney');
+INSERT INTO movie_keywords VALUES(1, 'let it snow');
+INSERT INTO movie_song VALUES(1, 1);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
