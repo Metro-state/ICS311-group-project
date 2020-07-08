@@ -310,15 +310,42 @@ role (from song_people)
 keywords (from song_keywords, show this info as comma separated list
 media (from songs_media - show the IDs as comma separated list, media_link will be a hyper link)
 ========================================================================= -->
-
 <div class="right-content">
   <div class="container">
-    <h3 style="color: #01B0F1;">[C.1] Movie -> Songs</h3>
+    <h3 style="color: #01B0F1;">Movie -> Songs</h3>
 
-    <?php
+    <table class="display" id="movie_media_table" style="width:100%" border="1">
+      <div class="table responsive">
 
-    //TODO: 
-    ?>
+        <thead>
+          <tr>
+            <th> Title </th>
+            <th> lyrics</th>
+            <th> screen name</th>
+            <th> role</th>
+            <th> keywords</th>
+            <th> media</th>
+          </tr>
+        </thead>
+
+      <?php
+        $sql_C1 = "SELECT *
+                  FROM movie_song JOIN songs ON (movie_song.song_id = songs.song_id)
+                  WHERE movie_song.movie_id =" . $movie_id;
+
+        if (!$sql_C1_result = $db->query($sql_C1)) {
+          die('There was an error running query[' . $connection->error . ']');
+        }
+        if ($sql_C1_result->num_rows > 0) {
+          while ($c1_tuple = $sql_C1_result->fetch_assoc()) {
+            echo '<tr>
+                      <td>' . $c1_tuple["title"] . '</td>
+                      <td>' . substr($c1_tuple["lyrics"], 0, 30) . '</td>
+                  </tr>';
+          }
+        }
+        $sql_C1_result->close();
+      ?>
   </div>
 </div>
 
@@ -365,6 +392,7 @@ media (from songs_media - show the IDs as comma separated list, media_link will 
   tfoot {
     display: table-header-group;
   }
+
 </style>
 
 <?php include("./footer.php"); ?>
