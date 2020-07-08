@@ -73,7 +73,7 @@ $result = $db->query($sql);
         <script type="text/javascript" language="javascript">
     $(document).ready( function () {
         
-        $('#info').DataTable( {
+        $('').DataTable( {
             dom: 'lfrtBip',
             buttons: [
                 'copy', 'excel', 'csv', 'pdf'
@@ -95,7 +95,7 @@ $result = $db->query($sql);
             } );
         } );
     
-        var table = $('#info').DataTable( {
+        var table = $('').DataTable( {
             orderCellsTop: true,
             fixedHeader: true,
             retrieve: true
