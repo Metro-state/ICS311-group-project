@@ -243,12 +243,8 @@ keywords (show it as a comma separated list)
 
 <div class="right-content">
   <div class="container">
-    <h3 style="color: #01B0F1;">[A.4] Movie -> Key Words</h3>
+    <h3 style="color: #01B0F1;">Movie -> Key Words</h3>
 
-    <?php
-
-    //TODO: 
-    ?>
   </div>
 </div>
 

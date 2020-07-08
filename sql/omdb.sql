@@ -1304,7 +1304,9 @@ ALTER TABLE `movies`
   MODIFY `movie_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
 
 INSERT INTO movie_media VALUES(1, 'frozen_poster_1.jpg', 'poster', 1);
-
+INSERT INTO movie_keywords VALUES(1, 'frozen');
+INSERT INTO movie_keywords VALUES(1, 'disney');
+INSERT INTO movie_keywords VALUES(1, 'let it snow');
 
 COMMIT;
 
