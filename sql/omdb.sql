@@ -1308,6 +1308,8 @@ INSERT INTO movie_keywords VALUES(1, 'frozen');
 INSERT INTO movie_keywords VALUES(1, 'disney');
 INSERT INTO movie_keywords VALUES(1, 'let it snow');
 INSERT INTO movie_song VALUES(1, 1);
+INSERT INTO song_media VALUES(1, 'some_link', 'audio', 1);
+INSERT INTO song_people VALUES(1, 1, 'Lead Singer');
 
 COMMIT;
 
