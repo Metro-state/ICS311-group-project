@@ -278,12 +278,23 @@ image_name
 
 <div class="right-content">
   <div class="container">
-    <h3 style="color: #01B0F1;">[B.1] Movie -> People</h3>
+    <h3 style="color: #01B0F1;">Movie -> People</h3>
 
-    <?php
+      <?php
+        $sql_B1 = "SELECT *
+                  FROM movie_people JOIN people ON (movie_people.people_id = people.id)
+                  WHERE movie_people.movie_id =" . $movie_id;
 
-    //TODO: 
-    ?>
+        if (!$sql_B1_result = $db->query($sql_B1)) {
+          die('There was an error running query[' . $connection->error . ']');
+        }
+        if ($sql_B1_result->num_rows > 0) {
+          while ($b1_tuple = $sql_B1_result->fetch_assoc()) {
+            echo '<li>'.$b1_tuple["role"].': '.$b1_tuple["screen_name"].'</li>';
+          }
+        }
+        $sql_B1_result->close();
+      ?>
   </div>
 </div>
 
