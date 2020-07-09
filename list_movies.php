@@ -25,6 +25,7 @@
                         <th>Native Name</th>
                         <th>English Name</th>
                         <th>Release Year</th>
+                        <th>Buttons</th>
 
                 </tr>
               </thead>
@@ -34,6 +35,7 @@
                         <th>Native Name</th>
                         <th>English Name</th>
                         <th>Release Year</th>
+                        <th>Buttons</th>
 
                 </tr>
               </tfoot>
@@ -52,6 +54,10 @@ $result = $db->query($sql);
                                 <td><a href="./movie_info.php?movie_id='.$row["movie_id"].'">'.$row["native_name"].'</a></td>
                                 <td>'.$row["english_name"].' </span> </td>
                                 <td>'.$row["year_made"].'</td>
+                                 <td><a class="btn btn-info btn-sm" href="movie_info.php?movie_id='.$row["movie_id"].'">Display</a>
+                                    <a class="btn btn-warning btn-sm" href="modify_movie.php?movie_id='.$row["movie_id"].'">Modify</a>
+                                    <a class="btn btn-danger btn-sm" href="delete_movie.php?movie_id='.$row["movie_id"].'">Delete</a></td>  
+
                             </tr>';
                     }//end while
                 }//end if

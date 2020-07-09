@@ -45,8 +45,8 @@
               <?php
 
 $sql = "SELECT * from songs
-	INNER JOIN movie_song ON (songs.song_id = movie_song.song_id)
-	INNER JOIN movies ON (movies.movie_id = movie_song.movie_id)";
+	LEFT OUTER JOIN movie_song ON (songs.song_id = movie_song.song_id)
+	LEFT OUTER JOIN movies ON (movies.movie_id = movie_song.movie_id)";
 $result = $db->query($sql);
 
                 if ($result->num_rows > 0) {
