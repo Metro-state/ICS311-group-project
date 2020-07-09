@@ -22,15 +22,21 @@
             width="100%" style="width: 100px;">
               <thead>
                 <tr id="table-first-row">
+                				<th>ID</th>
                         <th>Title</th>
                         <th>Lyrics</th>
+                        <th>Native Name</th>
+                        <th>English Name</th>
                 </tr>
               </thead>
 
               <tfoot>
                 <tr>
+                				<th>ID</th>
                         <th>Title</th>
                         <th>Lyrics</th>
+                        <th>Native Name</th>
+                        <th>English Name</th>
                 </tr>
               </tfoot>
 
@@ -38,7 +44,9 @@
 
               <?php
 
-$sql = "SELECT * from songs;";
+$sql = "SELECT * from songs
+	INNER JOIN movie_song ON (songs.song_id = movie_song.song_id)
+	INNER JOIN movies ON (movies.movie_id = movie_song.movie_id)";
 $result = $db->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -46,8 +54,11 @@ $result = $db->query($sql);
                     while($row = $result->fetch_assoc()) {
                         //$url = "/movie_info.php?id=".$row["movie_id"];
                         echo '<tr>
+                        				<td>'.$row["song_id"].' </span> </td>
                                 <td>'.$row["title"].' </span> </td>
                                 <td>'.substr($row["lyrics"], 0, 100).'</td>
+                                <td>'.$row["native_name"].' </span> </td>
+                                <td>'.$row["english_name"].' </span> </td>
                             </tr>';
                     }//end while
                 }//end if
