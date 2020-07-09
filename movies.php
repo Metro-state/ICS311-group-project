@@ -25,6 +25,7 @@
                         <th>Native Name</th>
                         <th>English Name</th>
                         <th>Release Year</th>
+                        <th>Buttons</th>
 
                 </tr>
               </thead>
@@ -34,6 +35,7 @@
                         <th>Native Name</th>
                         <th>English Name</th>
                         <th>Release Year</th>
+                        <th>Buttons</th>
 
                 </tr>
               </tfoot>
