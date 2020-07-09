@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2020 at 03:37 AM
+-- Generation Time: Jul 09, 2020 at 04:15 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.17
 
@@ -1159,6 +1159,16 @@ CREATE TABLE `movie_trivia` (
   `movie_id` int(6) NOT NULL,
   `trivia` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `omdb_sql_queries`
+--
+
+CREATE TABLE `omdb_sql_queries` (
+  `7.33` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
