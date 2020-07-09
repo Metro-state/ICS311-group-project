@@ -38,7 +38,7 @@
 
               <?php
 
-$sql = "SELECT * FROM movies INNER JOIN movie_data ON movies.movie_id = movie_data.movie_id ORDER BY year_made ASC;";
+$sql = "SELECT * FROM movies LEFT OUTER JOIN movie_data ON movies.movie_id = movie_data.movie_id ORDER BY year_made ASC;";
 
 
 $result = $db->query($sql);
