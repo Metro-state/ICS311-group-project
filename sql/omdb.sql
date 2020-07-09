@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2020 at 07:31 PM
+-- Generation Time: Jul 09, 2020 at 03:37 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.17
 
@@ -1076,6 +1076,14 @@ CREATE TABLE `movie_keywords` (
   `keyword` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `movie_keywords`
+--
+
+INSERT INTO `movie_keywords` (`movie_id`, `keyword`) VALUES
+(1, 'frozen'),
+(2, 'wreck');
+
 -- --------------------------------------------------------
 
 --
@@ -1088,6 +1096,14 @@ CREATE TABLE `movie_media` (
   `m_link_type` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'video, poster, image are three possible values.',
   `movie_id` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `movie_media`
+--
+
+INSERT INTO `movie_media` (`movie_media_id`, `m_link`, `m_link_type`, `movie_id`) VALUES
+(1, 'https://www.imdb.com/title/tt2294629/', 'video', 1),
+(2, 'https://www.imdb.com/title/tt1772341/', 'video', 2);
 
 -- --------------------------------------------------------
 
@@ -1107,11 +1123,12 @@ CREATE TABLE `movie_people` (
 
 INSERT INTO `movie_people` (`movie_id`, `people_id`, `role`) VALUES
 (1, 1, 'Director'),
-(1, 1, 'Supporting Acto'),
+(1, 1, 'Supporting Actor'),
 (1, 2, 'Director'),
 (1, 3, 'Producer'),
 (1, 4, 'Lead Actress'),
-(1, 5, 'Lead Actor');
+(1, 5, 'Lead Actor'),
+(2, 6, 'Supporting Actor');
 
 -- --------------------------------------------------------
 
@@ -1123,6 +1140,14 @@ CREATE TABLE `movie_song` (
   `movie_id` int(6) NOT NULL,
   `song_id` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='This tables reflects an associative entity (movie,song)';
+
+--
+-- Dumping data for table `movie_song`
+--
+
+INSERT INTO `movie_song` (`movie_id`, `song_id`) VALUES
+(1, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -1160,7 +1185,8 @@ INSERT INTO `people` (`id`, `screen_name`, `first_name`, `middle_name`, `last_na
 (2, 'Jennifer Lee', 'Jennifer', '', 'Lee', 'Female', ''),
 (3, 'Peter Vecho', 'Peter', 'Del ', 'Vecho', 'Male', ''),
 (4, 'Kristen Bell', 'Kristen', '', 'Bell', 'Female', ''),
-(5, 'Jonathan Groff', 'Jonathan ', 'Drew', 'Groff', 'Male', '');
+(5, 'Jonathan Groff', 'Jonathan ', 'Drew', 'Groff', 'Male', ''),
+(6, 'John C. Reilly', 'John', 'C.', 'Reilly', 'Male', 'Ralph');
 
 -- --------------------------------------------------------
 
@@ -1179,7 +1205,8 @@ CREATE TABLE `songs` (
 --
 
 INSERT INTO `songs` (`song_id`, `title`, `lyrics`) VALUES
-(1, 'Let It go', 'The snow glows white on the mountain tonight\r\nNot a footprint to be seen\r\nA kingdom of isolation\r\nAnd it looks like I\'m the queen\r\nThe wind is howling like this swirling storm inside\r\nCouldn\'t keep it in, heaven knows I\'ve tried\r\nDon\'t let them in, don\'t let them see\r\nBe the good girl you always have to be\r\nConceal, don\'t feel, don\'t let them know\r\nWell, now they know\r\nLet it go, let it go\r\nCan\'t hold it back anymore\r\nLet it go, let it go\r\nTurn away and slam the door\r\nI don\'t care what they\'re going to say\r\nLet the storm rage on\r\nThe cold never bothered me anyway\r\nLet it go, let it go\r\nCan\'t hold it back anymore\r\nLet it go, let it go\r\nTurn away and slam the door\r\nLet it go (go, go, go go, go go, go go, go, go, go go)\r\nLet it go\r\nLet it go\r\nLet it go\r\nIt\'s funny how some distance makes…');
+(1, 'Let It go', 'The snow glows white on the mountain tonight\r\nNot a footprint to be seen\r\nA kingdom of isolation\r\nAnd it looks like I\'m the queen\r\nThe wind is howling like this swirling storm inside\r\nCouldn\'t keep it in, heaven knows I\'ve tried\r\nDon\'t let them in, don\'t let them see\r\nBe the good girl you always have to be\r\nConceal, don\'t feel, don\'t let them know\r\nWell, now they know\r\nLet it go, let it go\r\nCan\'t hold it back anymore\r\nLet it go, let it go\r\nTurn away and slam the door\r\nI don\'t care what they\'re going to say\r\nLet the storm rage on\r\nThe cold never bothered me anyway\r\nLet it go, let it go\r\nCan\'t hold it back anymore\r\nLet it go, let it go\r\nTurn away and slam the door\r\nLet it go (go, go, go go, go go, go go, go, go, go go)\r\nLet it go\r\nLet it go\r\nLet it go\r\nIt\'s funny how some distance makes…'),
+(2, 'Shut Up and Drive', 'I\'ve been looking for a driver who is qualified\r\nSo if you think that you\'re the one step into my ride\r\nI\'m a fine-tuned supersonic speed machine\r\nGot a sunroof top and a gangster lead\r\nSo if you feel it, let me know, know, know\r\nCome on now, what you waiting for, for, for\r\nMy engine\'s ready to explode, explode, explode\r\nSo start me up and watch me go, go, go, go\r\nGet you where you wanna go, if you know what I mean\r\nGot a ride that\'s smoother than a limousine\r\nCan you handle the curves, can you run all the lights\r\nIf you can, baby boy, then we can go all night\r\n\'Cause it\'s 0 to 60 in 3.5\r\nBaby, you got the keys\r\nNow shut up and drive, drive, drive\r\nShut up and drive, drive, drive\r\nI got class like a \'57 Cadillac\r\nAnd overdrive with a whole lot of boom in the back\r\nYou look…');
 
 -- --------------------------------------------------------
 
@@ -1302,17 +1329,6 @@ ALTER TABLE `song_people`
 --
 ALTER TABLE `movies`
   MODIFY `movie_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
-
-INSERT INTO movie_media VALUES(1, 'frozen_poster_1.jpg', 'poster', 1);
-INSERT INTO movie_keywords VALUES(1, 'frozen');
-INSERT INTO movie_keywords VALUES(1, 'disney');
-INSERT INTO movie_keywords VALUES(1, 'let it snow');
-INSERT INTO movie_song VALUES(1, 1);
-INSERT INTO song_media VALUES(1, 'some_link', 'audio', 1);
-INSERT INTO song_people VALUES(1, 1, 'Lead Singer');
-INSERT INTO song_keywords VALUES(1, 'let it go');
-INSERT INTO song_keywords VALUES(1, 'kingdom of isolation');
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
