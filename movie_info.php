@@ -371,13 +371,29 @@ media (from songs_media - show the IDs as comma separated list, media_link will 
 		        }
 		        echo '<td>';
 		        while ($c3_tuple = $sql_C3_result->fetch_assoc()) {
-		        	echo '<li>' . $c3_tuple["keyword"] . '</li>';
+		          echo '<li>' . $c3_tuple["keyword"] . '</li>';
 		        }
 		        echo '</td>';
 		        $sql_C3_result->close();
 		        // END ====> song keywords
 
-						echo '</tr>';
+		        // START ====> song media
+            $sql_C4 = "SELECT *
+                      FROM song_media
+                      WHERE song_id = ".$song_id;
+
+            if (!$sql_C4_result = $db->query($sql_C4)) {
+		          die('There was an error running query[' . $connection->error . ']');
+		        }
+		        echo '<td>';
+		        while ($c4_tuple = $sql_C4_result->fetch_assoc()) {
+		        	echo '<li>' . $c4_tuple["s_link"] . '</li>';
+		        }
+		        echo '</td>';
+		        $sql_C4_result->close();
+		        // END ====> song media
+
+            echo '</tr>';
           }
         }
         $sql_C1_result->close();
