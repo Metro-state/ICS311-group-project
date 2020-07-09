@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2020 at 04:15 AM
+-- Generation Time: Jul 09, 2020 at 08:01 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.17
 
@@ -1053,17 +1053,18 @@ CREATE TABLE `movie_data` (
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `genre` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `plot` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL
+  `plot` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tag_line` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `movie_data`
 --
 
-INSERT INTO `movie_data` (`movie_id`, `language`, `country`, `genre`, `plot`) VALUES
-(1, 'English', 'USA', 'Animation', 'Princess Elsa of Arendelle possesses magical powers that allow her to control and create ice and snow, often using them to play with her younger sister, Anna. After Elsa accidentally injures Anna with her magic, their parents, the King and Queen, take both siblings to a colony of trolls led by Grand Pabbie. He heals Anna, but alters her memories so that she forgets about Elsa\'s magic. Grand Pabbie warns Elsa that she must learn to control her powers, and that fear will be her greatest enemy. The'),
-(2, 'English', 'USA', 'Animation', 'Arcade-game character Wreck-It Ralph is tired of always being the \"bad guy\" and losing to his \"good guy\" opponent, Fix-It Felix. Finally, after decades of seeing all the glory go to Felix, Ralph decides to take matters into his own hands. He sets off on a game-hopping trip to prove that he has what it takes to be a hero. However, while on his quest, Ralph accidentally unleashes a deadly enemy that threatens the entire arcade.'),
-(3, 'English/Sp', 'USA', 'Animation', 'Despite his family\'s generations-old ban on music, young Miguel dreams of becoming an accomplished musician like his idol Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead. After meeting a charming trickster named Héctor, the two new friends embark on an extraordinary journey to unlock the real story behind Miguel\'s family history.');
+INSERT INTO `movie_data` (`movie_id`, `language`, `country`, `genre`, `plot`, `tag_line`) VALUES
+(1, 'English', 'USA', 'Animation', 'Princess Elsa of Arendelle possesses magical powers that allow her to control and create ice and snow, often using them to play with her younger sister, Anna. After Elsa accidentally injures Anna with her magic, their parents, the King and Queen, take both siblings to a colony of trolls led by Grand Pabbie. He heals Anna, but alters her memories so that she forgets about Elsa\'s magic. Grand Pabbie warns Elsa that she must learn to control her powers, and that fear will be her greatest enemy. The', 'Let it go!'),
+(2, 'English', 'USA', 'Animation', 'Arcade-game character Wreck-It Ralph is tired of always being the \"bad guy\" and losing to his \"good guy\" opponent, Fix-It Felix. Finally, after decades of seeing all the glory go to Felix, Ralph decides to take matters into his own hands. He sets off on a game-hopping trip to prove that he has what it takes to be a hero. However, while on his quest, Ralph accidentally unleashes a deadly enemy that threatens the entire arcade.', 'I don\'t want to be the bad guy anymore!'),
+(3, 'English/Sp', 'USA', 'Animation', 'Despite his family\'s generations-old ban on music, young Miguel dreams of becoming an accomplished musician like his idol Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead. After meeting a charming trickster named Héctor, the two new friends embark on an extraordinary journey to unlock the real story behind Miguel\'s family history.', 'I can\'t quit music!');
 
 -- --------------------------------------------------------
 
@@ -1114,21 +1115,42 @@ INSERT INTO `movie_media` (`movie_media_id`, `m_link`, `m_link_type`, `movie_id`
 CREATE TABLE `movie_people` (
   `movie_id` int(6) NOT NULL,
   `people_id` int(6) NOT NULL,
-  `role` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'director, producer, music director, lead actor, lead actress, supporting actor, supporting actress are possible values'
+  `role` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'director, producer, music director, lead actor, lead actress, supporting actor, supporting actress are possible values',
+  `screen_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `movie_people`
 --
 
-INSERT INTO `movie_people` (`movie_id`, `people_id`, `role`) VALUES
-(1, 1, 'Director'),
-(1, 1, 'Supporting Actor'),
-(1, 2, 'Director'),
-(1, 3, 'Producer'),
-(1, 4, 'Lead Actress'),
-(1, 5, 'Lead Actor'),
-(2, 6, 'Supporting Actor');
+INSERT INTO `movie_people` (`movie_id`, `people_id`, `role`, `screen_name`) VALUES
+(1, 1, 'Director', ''),
+(1, 1, 'Supporting Actor', ''),
+(1, 2, 'Director', ''),
+(1, 3, 'Producer', ''),
+(1, 4, 'Lead Actress', ''),
+(1, 5, 'Lead Actor', ''),
+(2, 6, 'Supporting Actor', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movie_quotes`
+--
+
+CREATE TABLE `movie_quotes` (
+  `movie_id` int(10) NOT NULL,
+  `movie_quote_id` int(10) NOT NULL,
+  `movie_quote` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `movie_quotes`
+--
+
+INSERT INTO `movie_quotes` (`movie_id`, `movie_quote_id`, `movie_quote`) VALUES
+(1, 1, '\"You can\'t marry someone you just met\"'),
+(2, 2, '\"I\'m gonna wreck it!\"');
 
 -- --------------------------------------------------------
 
@@ -1156,9 +1178,18 @@ INSERT INTO `movie_song` (`movie_id`, `song_id`) VALUES
 --
 
 CREATE TABLE `movie_trivia` (
-  `movie_id` int(6) NOT NULL,
-  `trivia` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `movie_id` int(10) NOT NULL,
+  `movie_trivia_id` int(10) NOT NULL,
+  `movie_trivia` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `movie_trivia`
+--
+
+INSERT INTO `movie_trivia` (`movie_id`, `movie_trivia_id`, `movie_trivia`) VALUES
+(1, 1, 'What is the snowman\'s name?'),
+(2, 2, 'Who does Felix marry?');
 
 -- --------------------------------------------------------
 
@@ -1167,8 +1198,18 @@ CREATE TABLE `movie_trivia` (
 --
 
 CREATE TABLE `omdb_sql_queries` (
-  `7.33` varchar(20) NOT NULL
+  `7.55` varchar(50) NOT NULL,
+  `7.47` varchar(50) NOT NULL,
+  `7.37` varchar(50) NOT NULL,
+  `7.52` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `omdb_sql_queries`
+--
+
+INSERT INTO `omdb_sql_queries` (`7.55`, `7.47`, `7.37`, `7.52`) VALUES
+('SELECT movie_id FROM movie_data WHERE genre = \"ani', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -1178,7 +1219,7 @@ CREATE TABLE `omdb_sql_queries` (
 
 CREATE TABLE `people` (
   `id` int(6) NOT NULL,
-  `screen_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Many people in the movie industry are known by short names',
+  `stage_name` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Many people in the movie industry are known by short names',
   `first_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `middle_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1190,7 +1231,7 @@ CREATE TABLE `people` (
 -- Dumping data for table `people`
 --
 
-INSERT INTO `people` (`id`, `screen_name`, `first_name`, `middle_name`, `last_name`, `gender`, `image_name`) VALUES
+INSERT INTO `people` (`id`, `stage_name`, `first_name`, `middle_name`, `last_name`, `gender`, `image_name`) VALUES
 (1, 'Chris Buck', 'Chris', '', 'Buck', 'Male', ''),
 (2, 'Jennifer Lee', 'Jennifer', '', 'Lee', 'Female', ''),
 (3, 'Peter Vecho', 'Peter', 'Del ', 'Vecho', 'Male', ''),
@@ -1201,22 +1242,43 @@ INSERT INTO `people` (`id`, `screen_name`, `first_name`, `middle_name`, `last_na
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `people_trivia`
+--
+
+CREATE TABLE `people_trivia` (
+  `people_id` int(10) NOT NULL,
+  `people_trivia_id` int(10) NOT NULL,
+  `people_trivia` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `people_trivia`
+--
+
+INSERT INTO `people_trivia` (`people_id`, `people_trivia_id`, `people_trivia`) VALUES
+(1, 1, 'Who does Chris Buck play in the movie Frozen?'),
+(6, 2, 'Who does John Reilly play in the movie Wreck it Ralph?');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `songs`
 --
 
 CREATE TABLE `songs` (
   `song_id` int(5) NOT NULL,
   `title` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lyrics` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `lyrics` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `theme` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `songs`
 --
 
-INSERT INTO `songs` (`song_id`, `title`, `lyrics`) VALUES
-(1, 'Let It go', 'The snow glows white on the mountain tonight\r\nNot a footprint to be seen\r\nA kingdom of isolation\r\nAnd it looks like I\'m the queen\r\nThe wind is howling like this swirling storm inside\r\nCouldn\'t keep it in, heaven knows I\'ve tried\r\nDon\'t let them in, don\'t let them see\r\nBe the good girl you always have to be\r\nConceal, don\'t feel, don\'t let them know\r\nWell, now they know\r\nLet it go, let it go\r\nCan\'t hold it back anymore\r\nLet it go, let it go\r\nTurn away and slam the door\r\nI don\'t care what they\'re going to say\r\nLet the storm rage on\r\nThe cold never bothered me anyway\r\nLet it go, let it go\r\nCan\'t hold it back anymore\r\nLet it go, let it go\r\nTurn away and slam the door\r\nLet it go (go, go, go go, go go, go go, go, go, go go)\r\nLet it go\r\nLet it go\r\nLet it go\r\nIt\'s funny how some distance makes…'),
-(2, 'Shut Up and Drive', 'I\'ve been looking for a driver who is qualified\r\nSo if you think that you\'re the one step into my ride\r\nI\'m a fine-tuned supersonic speed machine\r\nGot a sunroof top and a gangster lead\r\nSo if you feel it, let me know, know, know\r\nCome on now, what you waiting for, for, for\r\nMy engine\'s ready to explode, explode, explode\r\nSo start me up and watch me go, go, go, go\r\nGet you where you wanna go, if you know what I mean\r\nGot a ride that\'s smoother than a limousine\r\nCan you handle the curves, can you run all the lights\r\nIf you can, baby boy, then we can go all night\r\n\'Cause it\'s 0 to 60 in 3.5\r\nBaby, you got the keys\r\nNow shut up and drive, drive, drive\r\nShut up and drive, drive, drive\r\nI got class like a \'57 Cadillac\r\nAnd overdrive with a whole lot of boom in the back\r\nYou look…');
+INSERT INTO `songs` (`song_id`, `title`, `lyrics`, `theme`) VALUES
+(1, 'Let It go', 'The snow glows white on the mountain tonight\r\nNot a footprint to be seen\r\nA kingdom of isolation\r\nAnd it looks like I\'m the queen\r\nThe wind is howling like this swirling storm inside\r\nCouldn\'t keep it in, heaven knows I\'ve tried\r\nDon\'t let them in, don\'t let them see\r\nBe the good girl you always have to be\r\nConceal, don\'t feel, don\'t let them know\r\nWell, now they know\r\nLet it go, let it go\r\nCan\'t hold it back anymore\r\nLet it go, let it go\r\nTurn away and slam the door\r\nI don\'t care what they\'re going to say\r\nLet the storm rage on\r\nThe cold never bothered me anyway\r\nLet it go, let it go\r\nCan\'t hold it back anymore\r\nLet it go, let it go\r\nTurn away and slam the door\r\nLet it go (go, go, go go, go go, go go, go, go, go go)\r\nLet it go\r\nLet it go\r\nLet it go\r\nIt\'s funny how some distance makes…', ''),
+(2, 'Shut Up and Drive', 'I\'ve been looking for a driver who is qualified\r\nSo if you think that you\'re the one step into my ride\r\nI\'m a fine-tuned supersonic speed machine\r\nGot a sunroof top and a gangster lead\r\nSo if you feel it, let me know, know, know\r\nCome on now, what you waiting for, for, for\r\nMy engine\'s ready to explode, explode, explode\r\nSo start me up and watch me go, go, go, go\r\nGet you where you wanna go, if you know what I mean\r\nGot a ride that\'s smoother than a limousine\r\nCan you handle the curves, can you run all the lights\r\nIf you can, baby boy, then we can go all night\r\n\'Cause it\'s 0 to 60 in 3.5\r\nBaby, you got the keys\r\nNow shut up and drive, drive, drive\r\nShut up and drive, drive, drive\r\nI got class like a \'57 Cadillac\r\nAnd overdrive with a whole lot of boom in the back\r\nYou look…', '');
 
 -- --------------------------------------------------------
 
@@ -1228,6 +1290,14 @@ CREATE TABLE `song_keywords` (
   `song_id` int(5) NOT NULL,
   `keyword` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `song_keywords`
+--
+
+INSERT INTO `song_keywords` (`song_id`, `keyword`) VALUES
+(1, 'snow'),
+(2, 'drive');
 
 -- --------------------------------------------------------
 
@@ -1253,6 +1323,26 @@ CREATE TABLE `song_people` (
   `people_id` int(6) NOT NULL,
   `role` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `song_trivia`
+--
+
+CREATE TABLE `song_trivia` (
+  `song_id` int(10) NOT NULL,
+  `song_trivia_id` int(10) NOT NULL,
+  `song_trivia` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `song_trivia`
+--
+
+INSERT INTO `song_trivia` (`song_id`, `song_trivia_id`, `song_trivia`) VALUES
+(1, 1, 'Who sings \"Let it Go\"? '),
+(2, 2, 'Where was \"Shut up and drive\" played in the movie?');
 
 --
 -- Indexes for dumped tables
@@ -1289,16 +1379,16 @@ ALTER TABLE `movie_people`
   ADD PRIMARY KEY (`movie_id`,`people_id`,`role`);
 
 --
+-- Indexes for table `movie_quotes`
+--
+ALTER TABLE `movie_quotes`
+  ADD PRIMARY KEY (`movie_id`);
+
+--
 -- Indexes for table `movie_song`
 --
 ALTER TABLE `movie_song`
   ADD PRIMARY KEY (`movie_id`,`song_id`);
-
---
--- Indexes for table `movie_trivia`
---
-ALTER TABLE `movie_trivia`
-  ADD PRIMARY KEY (`movie_id`);
 
 --
 -- Indexes for table `people`
