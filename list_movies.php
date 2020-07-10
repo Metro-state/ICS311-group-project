@@ -56,8 +56,7 @@ $result = $db->query($sql);
                                 <td>'.$row["year_made"].'</td>
                                  <td><a class="btn btn-info btn-sm" href="movie_info.php?movie_id='.$row["movie_id"].'">Display</a>
                                     <a class="btn btn-warning btn-sm" href="modify_movie.php?movie_id='.$row["movie_id"].'">Modify</a>
-                                    <a class="btn btn-danger btn-sm" href="delete_movie.php?movie_id='.$row["movie_id"].'">Delete</a></td>  
-
+                                    <a onClick="return confirm(\'Are you sure you want to delete?\')" href=\'delete_movie.php?movie_id='.$row["movie_id"].'\'type=\'button\' class=\'btn btn-danger\'>Delete</a>
                             </tr>';
                     }//end while
                 }//end if
