@@ -1,6 +1,5 @@
 INSERT INTO movies VALUES (1002, 'Frozen', 'Frozen', 1995);
---Quoc comment: I think you insert the values in the songs in the incorrected order. It should be: song_id, title, lyrics, theme. I think you swapped lyrics and theme
-INSERT INTO songs VALUES (2, 'Let it go', 'Let it Go', 'The snow glows white on the mountain tonight. Not a footprint to be seen');
+INSERT INTO songs VALUES (2, 'Let it go', 'The snow glows white on the mountain tonight. Not a footprint to be seen', 'Let it Go');
 INSERT INTO movie_song VALUES (1002, 2);
 INSERT INTO movie_trivia VALUES (1002, 1, 'Blob');
 INSERT INTO movie_trivia VALUES (1002, 2, 'Blob 2');
@@ -50,12 +49,20 @@ SELECT movies.movie_id,
 FROM movies
     LEFT OUTER JOIN movie_data ON (movies.movie_id = movie_data.movie_id)
 WHERE movies.movie_id = 1002;
+
 -- Query 7.37
 SELECT * 
 FROM movies
 	LEFT OUTER JOIN movie_song ON (movies.movie_id = movie_song.movie_id)
 	LEFT OUTER JOIN songs ON (movie_song.song_id = songs.song_id)
 WHERE movies.english_name = 'Frozen' AND lyrics LIKE '% snow glows %';
+
+-- Query 7.47
+SELECT *
+FROM movies
+	INNER JOIN movie_people ON (movies.movie_id = movie_people.movie_id)
+WHERE role = 'Lead Actor' AND people_id = 2;
+
 -- Query 7.52: Give me a summary of the song count by the “theme”
 SELECT songs.theme AS song_theme, COUNT(song_id) AS song_count 
 FROM songs 
