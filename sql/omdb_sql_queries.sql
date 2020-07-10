@@ -67,3 +67,9 @@ WHERE role = 'Lead Actor' AND people_id = 2;
 SELECT songs.theme AS song_theme, COUNT(song_id) AS song_count 
 FROM songs 
 GROUP BY songs.theme;
+
+-- Query 7.55 
+SELECT * 
+FROM movies
+	INNER JOIN movie_data ON (movies.movie_id = movie_data.movie_id)
+WHERE movie_data.genre = "Animation";
