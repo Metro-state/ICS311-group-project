@@ -62,3 +62,8 @@ SELECT *
 FROM movies
 	INNER JOIN movie_people ON (movies.movie_id = movie_people.movie_id)
 WHERE role = 'Lead Actor' AND people_id = 2;
+
+-- Query 7.52: Give me a summary of the song count by the “theme”
+SELECT songs.theme AS song_theme, COUNT(song_id) AS song_count 
+FROM songs 
+GROUP BY songs.theme;
