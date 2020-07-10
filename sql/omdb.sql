@@ -1050,11 +1050,11 @@ INSERT INTO `movies` (`movie_id`, `native_name`, `english_name`, `year_made`) VA
 
 CREATE TABLE `movie_data` (
   `movie_id` int(6) NOT NULL COMMENT 'This is both PK and FK; movie_data is a WEAK entity',
+  `tag_line` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `language` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `genre` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `plot` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tag_line` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `plot` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
