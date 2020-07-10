@@ -49,9 +49,16 @@ SELECT movies.movie_id,
 FROM movies
     LEFT OUTER JOIN movie_data ON (movies.movie_id = movie_data.movie_id)
 WHERE movies.movie_id = 1002;
+
 -- Query 7.37
 SELECT * 
 FROM movies
 	LEFT OUTER JOIN movie_song ON (movies.movie_id = movie_song.movie_id)
 	LEFT OUTER JOIN songs ON (movie_song.song_id = songs.song_id)
 WHERE movies.english_name = 'Frozen' AND lyrics LIKE '% snow glows %';
+
+-- Query 7.47
+SELECT *
+FROM movies
+	INNER JOIN movie_people ON (movies.movie_id = movie_people.movie_id)
+WHERE role = 'Lead Actor' AND people_id = 2;
