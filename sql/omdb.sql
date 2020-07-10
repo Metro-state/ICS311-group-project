@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2020 at 08:01 PM
+-- Generation Time: Jul 10, 2020 at 07:16 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.17
 
@@ -1190,26 +1190,6 @@ CREATE TABLE `movie_trivia` (
 INSERT INTO `movie_trivia` (`movie_id`, `movie_trivia_id`, `movie_trivia`) VALUES
 (1, 1, 'What is the snowman\'s name?'),
 (2, 2, 'Who does Felix marry?');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `omdb_sql_queries`
---
-
-CREATE TABLE `omdb_sql_queries` (
-  `7.55` varchar(50) NOT NULL,
-  `7.47` varchar(50) NOT NULL,
-  `7.37` varchar(50) NOT NULL,
-  `7.52` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `omdb_sql_queries`
---
-
-INSERT INTO `omdb_sql_queries` (`7.55`, `7.47`, `7.37`, `7.52`) VALUES
-('SELECT movie_id FROM movie_data WHERE genre = \"ani', '', '', '');
 
 -- --------------------------------------------------------
 
