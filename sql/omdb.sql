@@ -1045,6 +1045,16 @@ INSERT INTO `movies` (`movie_id`, `native_name`, `english_name`, `year_made`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `movie_anagrams`
+--
+
+CREATE TABLE `movie_anagrams` (
+  `movie_id` int(6) NOT NULL COMMENT 'movie_anagrams is a WEAK entity. movie_id is both PK and FK',
+  `anagram` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'anagram of native name'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+--
 -- Table structure for table `movie_data`
 --
 
@@ -1108,6 +1118,21 @@ INSERT INTO `movie_media` (`movie_media_id`, `m_link`, `m_link_type`, `movie_id`
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `movie_numbers`
+--
+
+CREATE TABLE `movie_numbers` (
+  `movie_id` int(6) NOT NULL COMMENT 'This is both PK and FK; movie_numbers is a WEAK entity',
+  `running_time` int(3) DEFAULT NULL COMMENT 'Running Time in Minutes',
+  `length` int(2) DEFAULT NULL COMMENT 'length (depends on the native_name)',
+  `strength` int(2) DEFAULT NULL COMMENT 'strengh (depends on the native_name)',
+  `weight` int(2) DEFAULT NULL COMMENT 'weight (depends on native name)',
+  `budget` int(8) DEFAULT NULL COMMENT 'budget in local (native) currency',
+  `box_office` int(8) DEFAULT NULL COMMENT 'box office numbers in local (native) currency'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 --
 -- Table structure for table `movie_people`
 --
