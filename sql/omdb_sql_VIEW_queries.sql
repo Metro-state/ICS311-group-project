@@ -44,19 +44,24 @@ AS
       GROUP_CONCAT(distinct m_link_type) AS media_link_type,
       GROUP_CONCAT(distinct title) AS titles,
       GROUP_CONCAT(distinct stage_name),
-      movie_numbers.*,
-      movie_anagrams.*
+      movie_numbers.running_time,
+      movie_numbers.length,
+      movie_numbers.strength,
+      movie_numbers.weight,
+      movie_numbers.budget,
+      movie_numbers.box_office,
+      movie_anagrams.anagram
   FROM movies
-      LEFT JOIN movie_data ON (movies.movie_id = movie_data.movie_id)
-      LEFT JOIN movie_trivia ON (movies.movie_id = movie_trivia.movie_id)
-      LEFT JOIN movie_keywords ON (movies.movie_id = movie_keywords.movie_id)
-      LEFT JOIN movie_media ON (movies.movie_id = movie_media.movie_id)
-      LEFT JOIN movie_song ON (movies.movie_id = movie_song.song_id)
-      LEFT JOIN songs ON (movie_song.song_id = songs.song_id)
-      LEFT JOIN movie_people ON (movies.movie_id = movie_people.movie_id)
-      LEFT JOIN people ON (movie_people.people_id = people.people_id)
-      LEFT JOIN movie_numbers ON (movies.movie_id = movie_numbers.movie_id)
-      LEFT JOIN movie_anagrams ON (movies.movie_id = movie_anagrams.movie_id)
+     LEFT JOIN movie_data ON (movies.movie_id = movie_data.movie_id)
+     LEFT JOIN movie_trivia ON (movies.movie_id = movie_trivia.movie_id)
+     LEFT JOIN movie_keywords ON (movies.movie_id = movie_keywords.movie_id)
+     LEFT JOIN movie_media ON (movies.movie_id = movie_media.movie_id)
+     LEFT JOIN movie_song ON (movies.movie_id = movie_song.song_id)
+     LEFT JOIN songs ON (movie_song.song_id = songs.song_id)
+     LEFT JOIN movie_people ON (movies.movie_id = movie_people.movie_id)
+     LEFT JOIN people ON (movie_people.people_id = people.people_id)
+     LEFT JOIN movie_numbers ON (movies.movie_id = movie_numbers.movie_id)
+     LEFT JOIN movie_anagrams ON (movies.movie_id = movie_anagrams.movie_id)
   GROUP BY movies.movie_id;
 
   CREATE VIEW people_view
