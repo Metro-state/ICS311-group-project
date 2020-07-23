@@ -58,7 +58,7 @@ AS
       LEFT JOIN movie_numbers ON (movies.movie_id = movie_numbers.movie_id)
       LEFT JOIN movie_anagrams ON (movies.movie_id = movie_anagrams.movie_id)
   GROUP BY movies.movie_id;
-  
+
   CREATE VIEW people_view
 AS
   SELECT people.id,
