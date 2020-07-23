@@ -20,7 +20,7 @@ SELECT movies.movie_id,
     english_name,
     year_made,
     tag_line,
-    LANGUAGE,
+    language,
     country,
     genre,
     plot,
@@ -64,9 +64,9 @@ FROM movies
 WHERE role = 'Lead Actor' AND people_id = 2;
 
 -- Query 7.52: Give me a summary of the song count by the “theme”
-SELECT songs.theme AS song_theme, COUNT(song_id) AS song_count 
-FROM songs 
-GROUP BY songs.theme;
+SELECT COALESCE(NULLIF(songs.theme, ''), '(This is an empty string)') AS theme_name, COUNT(song_id)
+FROM songs
+GROUP BY theme;
 
 -- Query 7.55 
 SELECT * 
