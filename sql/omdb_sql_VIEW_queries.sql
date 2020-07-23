@@ -3,13 +3,11 @@ INSERT INTO `song_media` (`song_media_id`, `s_link`, `s_link_type`, `song_id`) V
 INSERT INTO `song_people` (`song_id`, `people_id`, `role`) VALUES
 (1, 1, 'Supporting Acto');
 
-CREATE VIEW song_view 
-AS 
+CREATE VIEW song_view AS
   SELECT songs.song_id, 
          songs.title, 
          song_media.song_media_id, 
-         song_people.people_id, 
-         people.people_id, 
+         song_people.people_id,  
          movies.movie_id, 
          movies.english_name, 
          Group_concat(keyword) AS keyword 
@@ -26,8 +24,7 @@ AS
                       ON songs.song_id = song_keywords.song_id 
   GROUP  BY songs.song_id; 
 
-CREATE VIEW movie_view 
-AS 
+CREATE VIEW movie_view AS
   SELECT 
       movies.movie_id,
       movies.native_name,
@@ -64,8 +61,7 @@ AS
      LEFT JOIN movie_anagrams ON (movies.movie_id = movie_anagrams.movie_id)
   GROUP BY movies.movie_id;
 
-  CREATE VIEW people_view
-AS
+CREATE VIEW people_view AS
   SELECT people.people_id,
          people.stage_name,
          people_trivia.people_trivia_id,
