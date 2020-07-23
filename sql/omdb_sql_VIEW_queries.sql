@@ -58,3 +58,33 @@ AS
       LEFT JOIN movie_numbers ON (movies.movie_id = movie_numbers.movie_id)
       LEFT JOIN movie_anagrams ON (movies.movie_id = movie_anagrams.movie_id)
   GROUP BY movies.movie_id;
+  
+  CREATE VIEW people_view
+AS
+  SELECT people.id,
+         people.stage_name,
+         people_trivia.people_trivia_id,
+         movie_people.movie_id,
+         movie_people.screen_name,
+         movie_people.role,
+         movies.native_name,
+         movies.english_name,
+         movies.year_made,
+         song_people.song_id,
+         songs.title,
+         songs.lyrics,
+         Group_concat(keyword) AS keyword
+ FROM people
+         LEFT OUTER JOIN people_trivia
+                      ON people.id = people_trivia.people_trivia_id
+         LEFT OUTER JOIN movie_people
+                      ON people.id = movie_people.people_id
+         LEFT OUTER JOIN movies
+                      ON people.id = movies.movie_id
+         LEFT OUTER JOIN song_people
+                      ON people.id = song_people.song_id
+         LEFT OUTER JOIN songs
+                      ON people.id = songs.song_id
+         LEFT OUTER JOIN movie_keywords
+         			  ON people.id=movie_keywords.movie_id
+  GROUP BY people.id;
