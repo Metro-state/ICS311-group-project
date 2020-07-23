@@ -9,7 +9,7 @@ AS
          songs.title, 
          song_media.song_media_id, 
          song_people.people_id, 
-         people.id, 
+         people.people_id, 
          movies.movie_id, 
          movies.english_name, 
          Group_concat(keyword) AS keyword 
@@ -19,7 +19,7 @@ AS
          LEFT OUTER JOIN song_people 
                       ON songs.song_id = song_people.people_id 
          LEFT OUTER JOIN people 
-                      ON songs.song_id = people.id 
+                      ON songs.song_id = people.people_id 
          LEFT OUTER JOIN movies 
                       ON songs.song_id = movies.movie_id 
          LEFT OUTER JOIN song_keywords 
@@ -66,7 +66,7 @@ AS
 
   CREATE VIEW people_view
 AS
-  SELECT people.id,
+  SELECT people.people_id,
          people.stage_name,
          people_trivia.people_trivia_id,
          movie_people.movie_id,
@@ -81,15 +81,15 @@ AS
          Group_concat(keyword) AS keyword
  FROM people
          LEFT OUTER JOIN people_trivia
-                      ON people.id = people_trivia.people_trivia_id
+                      ON people.people_id = people_trivia.people_trivia_id
          LEFT OUTER JOIN movie_people
-                      ON people.id = movie_people.people_id
+                      ON people.people_id = movie_people.people_id
          LEFT OUTER JOIN movies
-                      ON people.id = movies.movie_id
+                      ON people.people_id = movies.movie_id
          LEFT OUTER JOIN song_people
-                      ON people.id = song_people.song_id
+                      ON people.people_id = song_people.song_id
          LEFT OUTER JOIN songs
-                      ON people.id = songs.song_id
+                      ON people.people_id = songs.song_id
          LEFT OUTER JOIN movie_keywords
-         			  ON people.id=movie_keywords.movie_id
-  GROUP BY people.id;
+         			  ON people.people_id=movie_keywords.movie_id
+  GROUP BY people.people_id;
