@@ -214,12 +214,26 @@ m_link_type
         if ($sql_A3_result->num_rows > 0) {
           // output data of each row
           while ($a3_tuple = $sql_A3_result->fetch_assoc()) {
-            echo '<tr>
-                      <td>' . $a3_tuple["movie_id"] . '</td>
-                      <td>' . $a3_tuple["movie_media_id"] . '</td>
-                      <td><img style="max-width: 100px; height: auto;" src="images/movies/'.$a3_tuple["m_link"].'"">
-                      <td>' . $a3_tuple["m_link_type"] . ' </span> </td>
-                  </tr>';
+			if($a3_tuple["m_link_type"] == "video")	//Post video
+			{
+				$vlk = str_replace("watch?v=", "embed/", $a3_tuple["m_link"]); //Convert youtube to embed video
+				echo '<tr>
+						  <td>' . $a3_tuple["movie_id"] . '</td>
+						  <td>' . $a3_tuple["movie_media_id"] . '</td>
+						  <td><iframe width="420" height="315" src="'.$vlk.'"></iframe>
+						  </td>
+						  <td>' . $a3_tuple["m_link_type"] . ' </span> </td>
+					  </tr>';
+			}
+			else if($a3_tuple["m_link_type"] == "poster")	//Post poster
+			{
+				echo '<tr>
+						  <td>' . $a3_tuple["movie_id"] . '</td>
+						  <td>' . $a3_tuple["movie_media_id"] . '</td>
+						  <td><img style="max-width: 200px; height: auto;" src="images/movies/'.$a3_tuple["m_link"].'""></td>
+						  <td>' . $a3_tuple["m_link_type"] . ' </span> </td>
+					  </tr>';
+			}
           } //end while
 
         } //end second if 
@@ -282,7 +296,7 @@ image_name
 
       <?php
         $sql_B1 = "SELECT *
-                  FROM movie_people JOIN people ON (movie_people.people_id = people.id)
+                  FROM movie_people JOIN people ON (movie_people.people_id = people.people_id)
                   WHERE movie_people.movie_id =" . $movie_id;
 
         if (!$sql_B1_result = $db->query($sql_B1)) {
@@ -317,17 +331,6 @@ media (from songs_media - show the IDs as comma separated list, media_link will 
     <table class="display" id="movie_media_table" style="width:100%" border="1">
       <div class="table responsive">
 
-        <thead>
-          <tr>
-            <th> Title </th>
-            <th> lyrics</th>
-            <th> screen name</th>
-            <th> role</th>
-            <th> keywords</th>
-            <th> media</th>
-          </tr>
-        </thead>
-
       <?php
         $sql_C1 = "SELECT *
                   FROM movie_song JOIN songs ON (movie_song.song_id = songs.song_id)
@@ -338,6 +341,16 @@ media (from songs_media - show the IDs as comma separated list, media_link will 
           die('There was an error running query[' . $connection->error . ']');
         }
         if ($sql_C1_result->num_rows > 0) {
+			echo "<thead>
+					  <tr>
+						<th> Title </th>
+						<th> lyrics</th>
+						<th> screen name</th>
+						<th> role</th>
+						<th> keywords</th>
+						<th> media</th>
+					  </tr>
+				  </thead>";
           while ($c1_tuple = $sql_C1_result->fetch_assoc()) {
           	echo '<tr>';
 

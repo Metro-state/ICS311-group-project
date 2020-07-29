@@ -3,6 +3,10 @@ INSERT INTO `song_media` (`song_media_id`, `s_link`, `s_link_type`, `song_id`) V
 INSERT INTO `song_people` (`song_id`, `people_id`, `role`) VALUES
 (1, 1, 'Supporting Acto');
 
+# FOR MOVIE_VIEW
+INSERT INTO movie_numbers VALUES (1002, 60, 127, 1, 5, 12700000, 840000000);
+INSERT INTO movie_anagrams VALUES (1002, "IDK?");
+
 CREATE VIEW song_view AS
   SELECT songs.song_id, 
          songs.title, 
