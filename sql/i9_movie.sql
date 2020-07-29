@@ -40,3 +40,11 @@ INSERT INTO `movie_numbers` (`movie_id`, `running_time`, `length`, `strength`, `
 
 INSERT INTO `movie_quotes` (`movie_id`, `movie_quote_id`, `movie_quote_name`) VALUES
 (1001, 10011, "Charlotte\'s Web");
+
+--SQL code for cascade DELETE for the movie:
+ALTER TABLE `movie_data` ADD CONSTRAINT `del_mov_casc_data` FOREIGN KEY (`movie_id`) REFERENCES `movies`(`movie_id`) ON DELETE CASCADE;
+ALTER TABLE `movie_anagrams` ADD CONSTRAINT `del_mov_casc_anagrams` FOREIGN KEY (`movie_id`) REFERENCES `movies`(`movie_id`) ON DELETE CASCADE;
+ALTER TABLE `movie_keywords` ADD CONSTRAINT `del_mov_casc_keywords` FOREIGN KEY (`movie_id`) REFERENCES `movies`(`movie_id`) ON DELETE CASCADE;
+ALTER TABLE `movie_media` ADD CONSTRAINT `del_mov_casc_media` FOREIGN KEY (`movie_id`) REFERENCES `movies`(`movie_id`) ON DELETE CASCADE;
+ALTER TABLE `movie_numbers` ADD CONSTRAINT `del_mov_casc_numbers` FOREIGN KEY (`movie_id`) REFERENCES `movies`(`movie_id`) ON DELETE CASCADE;
+ALTER TABLE `movie_quotes` ADD CONSTRAINT `del_mov_casc_quote` FOREIGN KEY (`movie_id`) REFERENCES `movies`(`movie_id`) ON DELETE CASCADE;
