@@ -33,7 +33,7 @@ INSERT INTO `movie_anagrams` (`movie_id`, `anagram`) VALUES
 INSERT INTO `movie_keywords` (`movie_id`, `keyword`) VALUES
 (1001, "pig"),
 (1001, "spider"),
-(1001, "Charlotte\'s"),
+(1001, "Charlotte\'s");
 
 INSERT INTO `movie_numbers` (`movie_id`, `running_time`, `length`, `strength`, `weight`, `budget`, `box_office`) VALUES
 (1001, 113, 15, NULL, NULL, 85000000, 150000000);
