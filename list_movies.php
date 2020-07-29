@@ -26,7 +26,6 @@
                         <th>English Name</th>
                         <th>Release Year</th>
                         <th>Buttons</th>
-
                 </tr>
               </thead>
 
@@ -36,7 +35,6 @@
                         <th>English Name</th>
                         <th>Release Year</th>
                         <th>Buttons</th>
-
                 </tr>
               </tfoot>
 
