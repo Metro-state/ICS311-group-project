@@ -361,14 +361,14 @@ media (from songs_media - show the IDs as comma separated list, media_link will 
             // START ====> song stuff
             $song_id = $c1_tuple["song_id"];
             $sql_C2 = "SELECT *
-                      FROM song_people JOIN people ON (song_people.people_id = people.id)
+                      FROM song_people JOIN people ON (song_people.people_id = people.people_id)
                       WHERE song_id = ".$song_id;
 
             if (!$sql_C2_result = $db->query($sql_C2)) {
 		          die('There was an error running query[' . $connection->error . ']');
 		        }
 		        while ($c2_tuple = $sql_C2_result->fetch_assoc()) {
-		        	echo '<td>' . $c2_tuple["screen_name"] . '</td>';
+		        	echo '<td>' . $c2_tuple["stage_name"] . '</td>';
 		        	echo '<td>' . $c2_tuple["role"] . '</td>';
 		        }
 		        $sql_C2_result->close();
