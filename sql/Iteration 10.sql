@@ -15,7 +15,7 @@ WHERE movie_data.genre = "Animation";
 SELECT *
 FROM `movies`
 WHERE year_made = "2005" OR year_made = "1956";
-[2] the query took 0.0031 seconds. The rows number prior to the optimization is 1002 for SIMPLE type
+[2] the query took 0.0248 seconds. The rows number prior to the optimization is 11813 for SIMPLE type
 [3] I indexed the attribute `year_made` in the table `movies` as well as convert the "OR" to "UNION ALL"
 Optimal query:
 (SELECT *
